@@ -7,6 +7,7 @@ import math
 VIEW_DISTANCE = 400     #Size of the viewable area
 WORLD_SIZE = 1600       #Size of world
 MOVE_SPEED = 20         #How far the player moves per step
+STEP_COUNTER = 0
 
 alive = True
 
@@ -438,116 +439,105 @@ south_move_2_img = make_south_moving_player_2()
 west_move_1_img = make_west_moving_player_1()
 west_move_2_img = make_west_moving_player_2()
 
-east_move_1 = canvas.create_image(100, 100, image = east_move_1_img, anchor = "center")
-east_move_2 = canvas.create_image(120, 100, image = east_move_2_img, anchor = "center")
-north_move_1 = canvas.create_image(140, 100, image = north_move_1_img, anchor = "center")
-north_move_2 = canvas.create_image(160, 100, image = north_move_2_img, anchor = "center")
-south_move_1 = canvas.create_image(180, 100, image = south_move_1_img, anchor = "center")
-south_move_2 = canvas.create_image(200, 100, image = south_move_2_img, anchor = "center")
-west_move_1 = canvas.create_image(220, 100, image = west_move_1_img, anchor = "center")
-west_move_2 = canvas.create_image(240, 100, image = west_move_2_img, anchor = "center")
-
 current_x = 300
 current_y = 300
 
 current_sprite_img = "south_move_1_img"
 
-if current_sprite_img == "south_move_1_img":
-    current_sprite_image = south_move_1_img
-elif current_sprite_img == "south_move_2_img":
-    current_sprite_image = south_move_2_img
-elif current_sprite_img == "north_move_1_img":
-    current_sprite_image = north_move_1_img
-elif current_sprite_img == "north_move_2_img":
-    current_sprite_image = north_move_2_img
-elif current_sprite_img == "east_move_1_img":
-    current_sprite_image = east_move_1_img
-elif current_sprite_img == "east_move_2_img":
-    current_sprite_image = east_move_2_img
-elif current_sprite_img == "west_move_1_img":
-    current_sprite_image = west_move_1_img
-elif current_sprite_img == "west_move_2_img":
-    current_sprite_image = west_move_2_img
+current_sprite_list = []
 
-
-current_sprite = canvas.create_image(current_x, current_y, image = current_sprite_image, anchor = "center")
+current_sprite = canvas.create_image(current_x, current_y, image = south_move_1_img, anchor = "center")
+current_sprite_list.append(current_sprite)
 
 def move_left(event):
-    global current_sprite_img, current_x, current_sprite
-    
-    if current_sprite_img == "south_move_1_img":
-        current_sprite_image = south_move_1_img
-    elif current_sprite_img == "south_move_2_img":
-        current_sprite_image = south_move_2_img
-    elif current_sprite_img == "north_move_1_img":
-        current_sprite_image = north_move_1_img
-    elif current_sprite_img == "north_move_2_img":
-        current_sprite_image = north_move_2_img
-    elif current_sprite_img == "east_move_1_img":
-        current_sprite_image = east_move_1_img
-    elif current_sprite_img == "east_move_2_img":
-        current_sprite_image = east_move_2_img
-    elif current_sprite_img == "west_move_1_img":
-        current_sprite_image = west_move_1_img
-    elif current_sprite_img == "west_move_2_img":
-        current_sprite_image = west_move_2_img
-    
+    global current_sprite_img, current_x, current_sprite, current_sprite_list, STEP_COUNTER
+    STEP_COUNTER+=1
+
     px1, py1, px2, py2 = canvas.bbox(current_sprite)
-    if current_sprite_img == "west_move_1_img":
-        current_sprite_img = west_move_2_img
+    
+    counter = 0
+    if len(current_sprite_list)>0:
+        for i in range(len(current_sprite_list)):
+            canvas.delete(current_sprite) 
+    if STEP_COUNTER %2 == 0:
+        current_sprite = canvas.create_image(current_x, current_y, image = west_move_2_img, anchor = "center")
     else:
-        current_sprite_img = west_move_1_img
+        current_sprite = canvas.create_image(current_x, current_y, image = west_move_1_img, anchor = "center")
+    current_sprite_list.append(current_sprite)
     if px1 <= 30:
         pass
     else:
         current_x -= MOVE_SPEED
         canvas.move(current_sprite, -MOVE_SPEED, 0) 
-    #canvas.delete(current_sprite)
-    current_sprite = canvas.create_image(current_x, current_y, image = current_sprite_image, anchor = "center")
 def move_right(event):
-    global current_sprite_img, current_x, current_sprite
-
-    if current_sprite_img == "south_move_1_img":
-        current_sprite_image = south_move_1_img
-    elif current_sprite_img == "south_move_2_img":
-        current_sprite_image = south_move_2_img
-    elif current_sprite_img == "north_move_1_img":
-        current_sprite_image = north_move_1_img
-    elif current_sprite_img == "north_move_2_img":
-        current_sprite_image = north_move_2_img
-    elif current_sprite_img == "east_move_1_img":
-        current_sprite_image = east_move_1_img
-    elif current_sprite_img == "east_move_2_img":
-        current_sprite_image = east_move_2_img
-    elif current_sprite_img == "west_move_1_img":
-        current_sprite_image = west_move_1_img
-    elif current_sprite_img == "west_move_2_img":
-        current_sprite_image = west_move_2_img
+    global current_sprite_img, current_x, current_sprite, current_sprite_list, STEP_COUNTER
+    STEP_COUNTER+=1
 
     px1, py1, px2, py2 = canvas.bbox(current_sprite)
-    if current_sprite_img == "east_move_1_img":
-        current_sprite_img = east_move_2_img
+    
+    counter = 0
+    if len(current_sprite_list)>0:
+        for i in range(len(current_sprite_list)):
+            canvas.delete(current_sprite) 
+    if STEP_COUNTER %2 == 0:
+        current_sprite = canvas.create_image(current_x, current_y, image = east_move_2_img, anchor = "center")
     else:
-        current_sprite_img = east_move_1_img
-    if px2 >= WORLD_SIZE-30:
+        current_sprite = canvas.create_image(current_x, current_y, image = east_move_1_img, anchor = "center")
+    current_sprite_list.append(current_sprite)
+    if px1 >= WORLD_SIZE-30:
         pass
     else:
         current_x += MOVE_SPEED
         canvas.move(current_sprite, MOVE_SPEED, 0)
-    current_sprite = canvas.create_image(current_x, current_y, image = current_sprite_image, anchor = "center")
-#def move_up(event):
-#
-#def move_down(event):
-
+def move_up(event):
+    global current_sprite_img, current_y, current_sprite, current_sprite_list, STEP_COUNTER
+    STEP_COUNTER+=1
+    
+    px1, py1, px2, py2 = canvas.bbox(current_sprite)
+    
+    counter = 0
+    if len(current_sprite_list)>0:
+        for i in range(len(current_sprite_list)):
+            canvas.delete(current_sprite) 
+    if STEP_COUNTER %2 == 0:
+        current_sprite = canvas.create_image(current_x, current_y, image = north_move_2_img, anchor = "center")
+    else:
+        current_sprite = canvas.create_image(current_x, current_y, image = north_move_1_img, anchor = "center")
+    current_sprite_list.append(current_sprite)
+    if py1 <= 30:
+        pass
+    else:
+        current_y -= MOVE_SPEED
+        canvas.move(current_sprite, 0, -MOVE_SPEED) 
+def move_down(event):
+    global current_sprite_img, current_y, current_sprite, current_sprite_list, STEP_COUNTER
+    STEP_COUNTER+=1
+    
+    px1, py1, px2, py2 = canvas.bbox(current_sprite)
+    
+    counter = 0
+    if len(current_sprite_list)>0:
+        for i in range(len(current_sprite_list)):
+            canvas.delete(current_sprite) 
+    if STEP_COUNTER %2 == 0:
+        current_sprite = canvas.create_image(current_x, current_y, image = south_move_2_img, anchor = "center")
+    else:
+        current_sprite = canvas.create_image(current_x, current_y, image = south_move_1_img, anchor = "center")
+    current_sprite_list.append(current_sprite)
+    if py2 >= WORLD_SIZE-30:
+        pass
+    else:
+        current_y += MOVE_SPEED
+        canvas.move(current_sprite, 0, MOVE_SPEED)
 
 root.bind("a", move_left)
 root.bind("d", move_right)
-#root.bind("w", move_up)
-#root.bind("s", move_down)
+root.bind("w", move_up)
+root.bind("s", move_down)
 
 root.bind("<Left>", move_left)
 root.bind("<Right>", move_right)
-#root.bind("<Up>", move_up)
-#root.bind("<Down>", move_down)
+root.bind("<Up>", move_up)
+root.bind("<Down>", move_down)
 
 root.mainloop()
