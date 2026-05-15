@@ -10,7 +10,7 @@ MOVE_SPEED = 20         #How far the player moves per step
 
 alive = True
 
-def make_east_moving_player_1(spawn_x, spawn_y):
+def make_east_moving_player_1():
     pattern = [
         "0000000001100000000",
         "0000000011440000000",
@@ -57,7 +57,7 @@ def make_east_moving_player_1(spawn_x, spawn_y):
             
     return img
             
-def make_east_moving_player_2(spawn_x, spawn_y):
+def make_east_moving_player_2():
     pattern = [
         "0000000001100000000",
         "0000000011440000000",
@@ -100,11 +100,12 @@ def make_east_moving_player_2(spawn_x, spawn_y):
             elif pattern[y][x] == "4":
                 img.put("#b7b7b7", (x,y))
             else:
-                img.put("#000000", (x,y))
+                pass
+                #img.put("#000000", (x,y))
             
     return img
             
-def make_north_moving_player_1(spawn_x, spawn_y):
+def make_west_moving_player_1():
     pattern = [
         "0000000011000000000",
         "0000000441100000000",
@@ -147,11 +148,12 @@ def make_north_moving_player_1(spawn_x, spawn_y):
             elif pattern[y][x] == "4":
                 img.put("#b7b7b7", (x,y))
             else:
-                img.put("#000000", (x,y))
+                pass
+                #img.put("#000000", (x,y))
             
     return img
             
-def make_north_moving_player_2(spawn_x, spawn_y):
+def make_west_moving_player_2():
     pattern = [
         "0000000011000000000",
         "0000000441100000000",
@@ -194,13 +196,38 @@ def make_north_moving_player_2(spawn_x, spawn_y):
             elif pattern[y][x] == "4":
                 img.put("#b7b7b7", (x,y))
             else:
-                img.put("#000000", (x,y))
+                pass
+                #img.put("#000000", (x,y))
             
     return img
             
-def make_south_moving_player_1(spawn_x, spawn_y):
+def make_south_moving_player_1():
     pattern = [
-
+        "0000011100000",
+        "0000144410000",
+        "0001424241000",
+        "0004444444000",
+        "0000411140000",
+        "0000044400000",
+        "0000444440000",
+        "0004444443000",
+        "0005444443000",
+        "0005444443000",
+        "0005444443000",
+        "0004444441000",
+        "0004444441000",
+        "0003444441000",
+        "0003444410000",
+        "0000444440000",
+        "0000444440000",
+        "0000444440000",
+        "0000330440000",
+        "0000330440000",
+        "0000330550000",
+        "0000440550000",
+        "0000550550000",
+        "0000550550000",
+        "0005550555000"
     ]
     h = len(pattern)
     w = len(pattern[0])
@@ -209,31 +236,48 @@ def make_south_moving_player_1(spawn_x, spawn_y):
     for y in range(h):
         for x in range(w):
             if pattern[y][x] == "1":
-                img.put("", (x,y))
+                img.put("#efefef", (x,y))
             elif pattern[y][x] == "2":
-                img.put("", (x,y))
+                img.put("#ea4335", (x,y))
             elif pattern[y][x] == "3":
-                img.put("", (x,y))
+                img.put("#d9d9d9", (x,y))
             elif pattern[y][x] == "4":
-                img.put("", (x,y))
+                img.put("#b7b7b7", (x,y))
             elif pattern[y][x] == "5":
-                img.put("", (x,y))
-            elif pattern[y][x] == "6":
-                img.put("", (x,y))
-            elif pattern[y][x] == "7":
-                img.put("", (x,y))
-            elif pattern[y][x] == "8":
-                img.put("", (x,y))
-            elif pattern[y][x] == "9":
-                img.put("", (x,y))
+                img.put("#999999", (x,y))
             else:
-                img.put("#000000", (x,y))
+                pass
+                #img.put("#000000", (x,y))
             
     return img
             
-def make_south_moving_player_2(spawn_x, spawn_y):
+def make_south_moving_player_2():
     pattern = [
-
+        "0000011100000",
+        "0000144410000",
+        "0001424241000",
+        "0004444444000",
+        "0000411140000",
+        "0000044400000",
+        "0000444440000",
+        "0003444444000",
+        "0003444445000",
+        "0003444445000",
+        "0003444445000",
+        "0001444444000",
+        "0001444444000",
+        "0001444443000",
+        "0000144443000",
+        "0000444440000",
+        "0000444440000",
+        "0000444440000",
+        "0000440330000",
+        "0000440330000",
+        "0000550330000",
+        "0000550440000",
+        "0000550550000",
+        "0000550550000",
+        "0005550555000"
     ]
     h = len(pattern)
     w = len(pattern[0])
@@ -242,31 +286,48 @@ def make_south_moving_player_2(spawn_x, spawn_y):
     for y in range(h):
         for x in range(w):
             if pattern[y][x] == "1":
-                img.put("", (x,y))
+                img.put("#efefef", (x,y))
             elif pattern[y][x] == "2":
-                img.put("", (x,y))
+                img.put("#ea4335", (x,y))
             elif pattern[y][x] == "3":
-                img.put("", (x,y))
+                img.put("#d9d9d9", (x,y))
             elif pattern[y][x] == "4":
-                img.put("", (x,y))
+                img.put("#b7b7b7", (x,y))
             elif pattern[y][x] == "5":
-                img.put("", (x,y))
-            elif pattern[y][x] == "6":
-                img.put("", (x,y))
-            elif pattern[y][x] == "7":
-                img.put("", (x,y))
-            elif pattern[y][x] == "8":
-                img.put("", (x,y))
-            elif pattern[y][x] == "9":
-                img.put("", (x,y))
+                img.put("#999999", (x,y))
             else:
-                img.put("#000000", (x,y))
+                pass
+                #img.put("#000000", (x,y))
             
     return img
             
-def make_west_moving_player_1(spawn_x, spawn_y):
+def make_north_moving_player_1():
     pattern = [
-
+        "0000011100000",
+        "0000111110000",
+        "0001111111000",
+        "0004111114000",
+        "0000411140000",
+        "0000044400000",
+        "0000444440000",
+        "0003444443000",
+        "0003444441000",
+        "0004444441000",
+        "0004444441000",
+        "0004444441000",
+        "0005444443000",
+        "0005444443000",
+        "0005444443000",
+        "0000444440000",
+        "0000444440000",
+        "0000444440000",
+        "0000440440000",
+        "0000330440000",
+        "0000330550000",
+        "0000330550000",
+        "0000110550000",
+        "0000110550000",
+        "0001110555000"
     ]
     h = len(pattern)
     w = len(pattern[0])
@@ -275,31 +336,48 @@ def make_west_moving_player_1(spawn_x, spawn_y):
     for y in range(h):
         for x in range(w):
             if pattern[y][x] == "1":
-                img.put("", (x,y))
+                img.put("#efefef", (x,y))
             elif pattern[y][x] == "2":
-                img.put("", (x,y))
+                img.put("#ea4335", (x,y))
             elif pattern[y][x] == "3":
-                img.put("", (x,y))
+                img.put("#d9d9d9", (x,y))
             elif pattern[y][x] == "4":
-                img.put("", (x,y))
+                img.put("#b7b7b7", (x,y))
             elif pattern[y][x] == "5":
-                img.put("", (x,y))
-            elif pattern[y][x] == "6":
-                img.put("", (x,y))
-            elif pattern[y][x] == "7":
-                img.put("", (x,y))
-            elif pattern[y][x] == "8":
-                img.put("", (x,y))
-            elif pattern[y][x] == "9":
-                img.put("", (x,y))
+                img.put("#999999", (x,y))
             else:
-                img.put("#000000", (x,y))
+                pass
+    
             
     return img
             
-def make_west_moving_player_2(spawn_x, spawn_y):
+def make_north_moving_player_2():
     pattern = [
-
+        "0000011100000",
+        "0000111110000",
+        "0001111111000",
+        "0004111114000",
+        "0000411140000",
+        "0000044400000",
+        "0000444440000",
+        "0003444443000",
+        "0001444443000",
+        "0001444444000",
+        "0001444444000",
+        "0001444444000",
+        "0003444445000",
+        "0003444445000",
+        "0003444445000",
+        "0000444440000",
+        "0000444440000",
+        "0000444440000",
+        "0000440440000",
+        "0000440330000",
+        "0000550330000",
+        "0000550330000",
+        "0000550110000",
+        "0000550110000",
+        "0005550111000"
     ]
     h = len(pattern)
     w = len(pattern[0])
@@ -308,51 +386,168 @@ def make_west_moving_player_2(spawn_x, spawn_y):
     for y in range(h):
         for x in range(w):
             if pattern[y][x] == "1":
-                img.put("", (x,y))
+                img.put("#efefef", (x,y))
             elif pattern[y][x] == "2":
-                img.put("", (x,y))
+                img.put("#ea4335", (x,y))
             elif pattern[y][x] == "3":
-                img.put("", (x,y))
+                img.put("#d9d9d9", (x,y))
             elif pattern[y][x] == "4":
-                img.put("", (x,y))
+                img.put("#b7b7b7", (x,y))
             elif pattern[y][x] == "5":
-                img.put("", (x,y))
-            elif pattern[y][x] == "6":
-                img.put("", (x,y))
-            elif pattern[y][x] == "7":
-                img.put("", (x,y))
-            elif pattern[y][x] == "8":
-                img.put("", (x,y))
-            elif pattern[y][x] == "9":
-                img.put("", (x,y))
+                img.put("#999999", (x,y))
             else:
-                img.put("#000000", (x,y))
+                pass
             
     return img
             
 
-def make_world():
-    #Declare the root and name it
-    root = tk.Tk()
-    root.title("Escape from Jurassic Park!")
+#Declare the root and name it
+root = tk.Tk()
+root.title("Escape from Jurassic Park!")
 
-    #Setting up the canvas w/ scrolling capabilities and a blue border
-    canvas = tk.Canvas(
-        root,
-        width = VIEW_DISTANCE,
-        height = VIEW_DISTANCE,
-        bg = "#03AE00",
-        scrollregion=(0, 0, WORLD_SIZE, WORLD_SIZE),
-        highlightthickness = 5,
-        highlightbackground = "#0BA5F8"
-    )
-    #Executes the set up
-    canvas.pack()
+#Setting up the canvas w/ scrolling capabilities and a blue border
+canvas = tk.Canvas(
+    root,
+    width = VIEW_DISTANCE,
+    height = VIEW_DISTANCE,
+    bg = "#03AE00",
+    scrollregion=(0, 0, WORLD_SIZE, WORLD_SIZE),
+    #highlightthickness = 5,
+    #highlightbackground = "#0BA5F8"
+)
 
-    #Optional line drawing to show movement can be inserted HERE:
+#Executes the set up
+canvas.pack()
 
-    #Creates the world border
-    canvas.create_rectangle(5, 5, WORLD_SIZE - 5, WORLD_SIZE - 5, outline = "#0BA5F8", width = 5)
+#Optional line drawing to show movement can be inserted HERE:
 
-    spawn_x = VIEW_DISTANCE // 2    #Starts player in center of map
-    spawn_y = VIEW_DISTANCE // 2    #Starts player in center of map
+#Creates the world border
+#canvas.create_rectangle(5, 5, WORLD_SIZE - 5, WORLD_SIZE - 5, outline = "#0BA5F8", width = 5)
+spawn_x = VIEW_DISTANCE // 2    #Starts player in center of map
+spawn_y = VIEW_DISTANCE // 2    #Starts player in center of map
+
+
+
+
+east_move_1_img= make_east_moving_player_1()
+east_move_2_img= make_east_moving_player_2()
+north_move_1_img = make_north_moving_player_1()
+north_move_2_img = make_north_moving_player_2()
+south_move_1_img = make_south_moving_player_1()
+south_move_2_img = make_south_moving_player_2()
+west_move_1_img = make_west_moving_player_1()
+west_move_2_img = make_west_moving_player_2()
+
+east_move_1 = canvas.create_image(100, 100, image = east_move_1_img, anchor = "center")
+east_move_2 = canvas.create_image(120, 100, image = east_move_2_img, anchor = "center")
+north_move_1 = canvas.create_image(140, 100, image = north_move_1_img, anchor = "center")
+north_move_2 = canvas.create_image(160, 100, image = north_move_2_img, anchor = "center")
+south_move_1 = canvas.create_image(180, 100, image = south_move_1_img, anchor = "center")
+south_move_2 = canvas.create_image(200, 100, image = south_move_2_img, anchor = "center")
+west_move_1 = canvas.create_image(220, 100, image = west_move_1_img, anchor = "center")
+west_move_2 = canvas.create_image(240, 100, image = west_move_2_img, anchor = "center")
+
+current_x = 300
+current_y = 300
+
+current_sprite_img = "south_move_1_img"
+
+if current_sprite_img == "south_move_1_img":
+    current_sprite_image = south_move_1_img
+elif current_sprite_img == "south_move_2_img":
+    current_sprite_image = south_move_2_img
+elif current_sprite_img == "north_move_1_img":
+    current_sprite_image = north_move_1_img
+elif current_sprite_img == "north_move_2_img":
+    current_sprite_image = north_move_2_img
+elif current_sprite_img == "east_move_1_img":
+    current_sprite_image = east_move_1_img
+elif current_sprite_img == "east_move_2_img":
+    current_sprite_image = east_move_2_img
+elif current_sprite_img == "west_move_1_img":
+    current_sprite_image = west_move_1_img
+elif current_sprite_img == "west_move_2_img":
+    current_sprite_image = west_move_2_img
+
+
+current_sprite = canvas.create_image(current_x, current_y, image = current_sprite_image, anchor = "center")
+
+def move_left(event):
+    global current_sprite_img, current_x, current_sprite
+    
+    if current_sprite_img == "south_move_1_img":
+        current_sprite_image = south_move_1_img
+    elif current_sprite_img == "south_move_2_img":
+        current_sprite_image = south_move_2_img
+    elif current_sprite_img == "north_move_1_img":
+        current_sprite_image = north_move_1_img
+    elif current_sprite_img == "north_move_2_img":
+        current_sprite_image = north_move_2_img
+    elif current_sprite_img == "east_move_1_img":
+        current_sprite_image = east_move_1_img
+    elif current_sprite_img == "east_move_2_img":
+        current_sprite_image = east_move_2_img
+    elif current_sprite_img == "west_move_1_img":
+        current_sprite_image = west_move_1_img
+    elif current_sprite_img == "west_move_2_img":
+        current_sprite_image = west_move_2_img
+    
+    px1, py1, px2, py2 = canvas.bbox(current_sprite)
+    if current_sprite_img == "west_move_1_img":
+        current_sprite_img = west_move_2_img
+    else:
+        current_sprite_img = west_move_1_img
+    if px1 <= 30:
+        pass
+    else:
+        current_x -= MOVE_SPEED
+        canvas.move(current_sprite, -MOVE_SPEED, 0) 
+    #canvas.delete(current_sprite)
+    current_sprite = canvas.create_image(current_x, current_y, image = current_sprite_image, anchor = "center")
+def move_right(event):
+    global current_sprite_img, current_x, current_sprite
+
+    if current_sprite_img == "south_move_1_img":
+        current_sprite_image = south_move_1_img
+    elif current_sprite_img == "south_move_2_img":
+        current_sprite_image = south_move_2_img
+    elif current_sprite_img == "north_move_1_img":
+        current_sprite_image = north_move_1_img
+    elif current_sprite_img == "north_move_2_img":
+        current_sprite_image = north_move_2_img
+    elif current_sprite_img == "east_move_1_img":
+        current_sprite_image = east_move_1_img
+    elif current_sprite_img == "east_move_2_img":
+        current_sprite_image = east_move_2_img
+    elif current_sprite_img == "west_move_1_img":
+        current_sprite_image = west_move_1_img
+    elif current_sprite_img == "west_move_2_img":
+        current_sprite_image = west_move_2_img
+
+    px1, py1, px2, py2 = canvas.bbox(current_sprite)
+    if current_sprite_img == "east_move_1_img":
+        current_sprite_img = east_move_2_img
+    else:
+        current_sprite_img = east_move_1_img
+    if px2 >= WORLD_SIZE-30:
+        pass
+    else:
+        current_x += MOVE_SPEED
+        canvas.move(current_sprite, MOVE_SPEED, 0)
+    current_sprite = canvas.create_image(current_x, current_y, image = current_sprite_image, anchor = "center")
+#def move_up(event):
+#
+#def move_down(event):
+
+
+root.bind("a", move_left)
+root.bind("d", move_right)
+#root.bind("w", move_up)
+#root.bind("s", move_down)
+
+root.bind("<Left>", move_left)
+root.bind("<Right>", move_right)
+#root.bind("<Up>", move_up)
+#root.bind("<Down>", move_down)
+
+root.mainloop()
