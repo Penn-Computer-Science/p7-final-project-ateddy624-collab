@@ -216,29 +216,385 @@ def make_west_stationary_player():
     return img
 
 def make_north_stationary_pistol():
-    pattern
+    pattern = [
+        "0000000000011100000000000",
+        "0000000000111110000000000",
+        "0000000001111111000000000",
+        "0000000004111114000000000",
+        "0000000000411140000000000",
+        "0000000000044400000000000",
+        "0000000000444440000000000",
+        "0000000001444441000000000",
+        "0000000001444441000000000",
+        "0000000001444441000000000",
+        "0000000001444441000000000",
+        "0000000001444441600000000",
+        "0000000001444441000000000",
+        "0000000003444443000000000",
+        "0000000003444443000000000",
+        "0000000000444440000000000",
+        "0000000000444440000000000",
+        "0000000000444440000000000",
+        "0000000000440440000000000",
+        "0000000000440440000000000",
+        "0000000000440440000000000",
+        "0000000000440440000000000",
+        "0000000000440440000000000",
+        "0000000000440440000000000",
+        "0000000004440444000000000"
+    ]
+    h = len(pattern)
+    w = len(pattern[0])
+    img = tk.PhotoImage(width=w, height=h)
+
+    for y in range(h):
+        for x in range(w):
+            if pattern[y][x] == "1":
+                img.put("#efefef", (x,y))
+            elif pattern[y][x] == "6":
+                img.put("#434343", (x,y))
+            elif pattern[y][x] == "3":
+                img.put("#d9d9d9", (x,y))
+            elif pattern[y][x] == "4":
+                img.put("#b7b7b7", (x,y))
+            else:
+                pass
+                #img.put("#000000", (x,y))
+            
+    return img
 def make_east_stationary_pistol():
-    pattern
+    pattern = [
+        "0000000001100000000000000",
+        "0000000011440000000000000",
+        "0000000111424000000000000",
+        "0000000144444000000000000",
+        "0000000044440000000000000",
+        "0000000004400000000000000",
+        "0000000044440000000000000",
+        "0000000041140000000000000",
+        "0000000041140000000000000",
+        "0000000041140000000000000",
+        "0000000041143300000000000",
+        "0000000041143300000000000",
+        "0000000044110555500000000",
+        "0000000044411150000000000",
+        "0000000044441100000000000",
+        "0000000044440000000000000",
+        "0000000044440000000000000",
+        "0000000044440000000000000",
+        "0000000004400000000000000",
+        "0000000004400000000000000",
+        "0000000004400000000000000",
+        "0000000004400000000000000",
+        "0000000004400000000000000",
+        "0000000004440000000000000",
+        "0000000004444000000000000"
+    ]
+    h = len(pattern)
+    w = len(pattern[0])
+    img = tk.PhotoImage(width=w, height=h)
+
+    for y in range(h):
+        for x in range(w):
+            if pattern[y][x] == "1":
+                img.put("#efefef", (x,y))
+            elif pattern[y][x] == "2":
+                img.put("#ea4335", (x,y))
+            elif pattern[y][x] == "3":
+                img.put("#d9d9d9", (x,y))
+            elif pattern[y][x] == "4":
+                img.put("#b7b7b7", (x,y))
+            elif pattern[y][x] == "5":
+                img.put("#666666", (x,y))
+            else:
+                pass
+                #img.put("#000000", (x,y))
+            
+    return img
 def make_south_stationary_pistol():
-    pattern
+    pattern = [
+        "0000000000011100000000000",
+        "0000000000144410000000000",
+        "0000000001424241000000000",
+        "0000000004444444000000000",
+        "0000000000411140000000000",
+        "0000000000044400000000000",
+        "0000000000444440000000000",
+        "0000000003444443000000000",
+        "0000000003444443000000000",
+        "0000000003444443000000000",
+        "0000000005444443000000000",
+        "0000000050544443000000000",
+        "0000000005444443000000000",
+        "0000000006444441000000000",
+        "0000000001444441000000000",
+        "0000000000444440000000000",
+        "0000000000444440000000000",
+        "0000000000444440000000000",
+        "0000000000440440000000000",
+        "0000000000440440000000000",
+        "0000000000440440000000000",
+        "0000000000440440000000000",
+        "0000000000440440000000000",
+        "0000000000440440000000000",
+        "0000000004440444000000000"
+    ]
+    h = len(pattern)
+    w = len(pattern[0])
+    img = tk.PhotoImage(width=w, height=h)
+
+    for y in range(h):
+        for x in range(w):
+            if pattern[y][x] == "1":
+                img.put("#efefef", (x,y))
+            elif pattern[y][x] == "2":
+                img.put("#ea4335", (x,y))
+            elif pattern[y][x] == "3":
+                img.put("#d9d9d9", (x,y))
+            elif pattern[y][x] == "4":
+                img.put("#b7b7b7", (x,y))
+            elif pattern[y][x] == "5":
+                img.put("#666666", (x,y))
+            elif pattern[y][x] == "6":
+                img.put("#434343", (x,y))
+            else:
+                pass
+                #img.put("#000000", (x,y))
+            
+    return img
 def make_west_stationary_pistol():
-    pattern
+    pattern = [
+        "0000000000000011000000000",
+        "0000000000000441100000000",
+        "0000000000004241110000000",
+        "0000000000004444410000000",
+        "0000000000000444400000000",
+        "0000000000000044000000000",
+        "0000000000000444400000000",
+        "0000000000000411400000000",
+        "0000000000000411400000000",
+        "0000000000000411400000000",
+        "0000000000033411400000000",
+        "0000000000033411400000000",
+        "0000000055550114400000000",
+        "0000000000511144400000000",
+        "0000000000011444400000000",
+        "0000000000000444400000000",
+        "0000000000000444400000000",
+        "0000000000000444400000000",
+        "0000000000000044000000000",
+        "0000000000000044000000000",
+        "0000000000000044000000000",
+        "0000000000000044000000000",
+        "0000000000000044000000000",
+        "0000000000000444000000000",
+        "0000000000004444000000000"
+    ]
+    h = len(pattern)
+    w = len(pattern[0])
+    img = tk.PhotoImage(width=w, height=h)
+
+    for y in range(h):
+        for x in range(w):
+            if pattern[y][x] == "1":
+                img.put("#efefef", (x,y))
+            elif pattern[y][x] == "2":
+                img.put("#ea4335", (x,y))
+            elif pattern[y][x] == "3":
+                img.put("#d9d9d9", (x,y))
+            elif pattern[y][x] == "4":
+                img.put("#b7b7b7", (x,y))
+            elif pattern[y][x] == "5":
+                img.put("#666666", (x,y))
+            else:
+                pass
+                #img.put("#000000", (x,y))
+            
+    return img
 def make_north_stationary_rifle():
-    pattern
+    pattern = [
+
+    ]
+    h = len(pattern)
+    w = len(pattern[0])
+    img = tk.PhotoImage(width=w, height=h)
+
+    for y in range(h):
+        for x in range(w):
+            if pattern[y][x] == "1":
+                img.put("#efefef", (x,y))
+            elif pattern[y][x] == "2":
+                img.put("#ea4335", (x,y))
+            elif pattern[y][x] == "3":
+                img.put("#d9d9d9", (x,y))
+            elif pattern[y][x] == "4":
+                img.put("#b7b7b7", (x,y))
+            else:
+                pass
+                #img.put("#000000", (x,y))
+            
+    return img
 def make_east_stationary_rifle():
-    pattern
+    pattern = [
+
+    ]
+    h = len(pattern)
+    w = len(pattern[0])
+    img = tk.PhotoImage(width=w, height=h)
+
+    for y in range(h):
+        for x in range(w):
+            if pattern[y][x] == "1":
+                img.put("#efefef", (x,y))
+            elif pattern[y][x] == "2":
+                img.put("#ea4335", (x,y))
+            elif pattern[y][x] == "3":
+                img.put("#d9d9d9", (x,y))
+            elif pattern[y][x] == "4":
+                img.put("#b7b7b7", (x,y))
+            else:
+                pass
+                #img.put("#000000", (x,y))
+            
+    return img
 def make_south_stationary_rifle():
-    pattern
+    pattern = [
+
+    ]
+    h = len(pattern)
+    w = len(pattern[0])
+    img = tk.PhotoImage(width=w, height=h)
+
+    for y in range(h):
+        for x in range(w):
+            if pattern[y][x] == "1":
+                img.put("#efefef", (x,y))
+            elif pattern[y][x] == "2":
+                img.put("#ea4335", (x,y))
+            elif pattern[y][x] == "3":
+                img.put("#d9d9d9", (x,y))
+            elif pattern[y][x] == "4":
+                img.put("#b7b7b7", (x,y))
+            else:
+                pass
+                #img.put("#000000", (x,y))
+            
+    return img
 def make_west_stationary_rifle():
-    pattern
+    pattern = [
+
+    ]
+    h = len(pattern)
+    w = len(pattern[0])
+    img = tk.PhotoImage(width=w, height=h)
+
+    for y in range(h):
+        for x in range(w):
+            if pattern[y][x] == "1":
+                img.put("#efefef", (x,y))
+            elif pattern[y][x] == "2":
+                img.put("#ea4335", (x,y))
+            elif pattern[y][x] == "3":
+                img.put("#d9d9d9", (x,y))
+            elif pattern[y][x] == "4":
+                img.put("#b7b7b7", (x,y))
+            else:
+                pass
+                #img.put("#000000", (x,y))
+            
+    return img
 def make_north_stationary_MG():
-    pattern
+    pattern = [
+
+    ]
+    h = len(pattern)
+    w = len(pattern[0])
+    img = tk.PhotoImage(width=w, height=h)
+
+    for y in range(h):
+        for x in range(w):
+            if pattern[y][x] == "1":
+                img.put("#efefef", (x,y))
+            elif pattern[y][x] == "2":
+                img.put("#ea4335", (x,y))
+            elif pattern[y][x] == "3":
+                img.put("#d9d9d9", (x,y))
+            elif pattern[y][x] == "4":
+                img.put("#b7b7b7", (x,y))
+            else:
+                pass
+                #img.put("#000000", (x,y))
+            
+    return img
 def make_east_stationary_MG():
-    pattern
+    pattern = [
+
+    ]
+    h = len(pattern)
+    w = len(pattern[0])
+    img = tk.PhotoImage(width=w, height=h)
+
+    for y in range(h):
+        for x in range(w):
+            if pattern[y][x] == "1":
+                img.put("#efefef", (x,y))
+            elif pattern[y][x] == "2":
+                img.put("#ea4335", (x,y))
+            elif pattern[y][x] == "3":
+                img.put("#d9d9d9", (x,y))
+            elif pattern[y][x] == "4":
+                img.put("#b7b7b7", (x,y))
+            else:
+                pass
+                #img.put("#000000", (x,y))
+            
+    return img
 def make_south_stationary_MG():
-    pattern
+    pattern = [
+
+    ]
+    h = len(pattern)
+    w = len(pattern[0])
+    img = tk.PhotoImage(width=w, height=h)
+
+    for y in range(h):
+        for x in range(w):
+            if pattern[y][x] == "1":
+                img.put("#efefef", (x,y))
+            elif pattern[y][x] == "2":
+                img.put("#ea4335", (x,y))
+            elif pattern[y][x] == "3":
+                img.put("#d9d9d9", (x,y))
+            elif pattern[y][x] == "4":
+                img.put("#b7b7b7", (x,y))
+            else:
+                pass
+                #img.put("#000000", (x,y))
+            
+    return img
 def make_west_stationary_MG():
-    pattern
+    pattern = [
+
+    ]
+    h = len(pattern)
+    w = len(pattern[0])
+    img = tk.PhotoImage(width=w, height=h)
+
+    for y in range(h):
+        for x in range(w):
+            if pattern[y][x] == "1":
+                img.put("#efefef", (x,y))
+            elif pattern[y][x] == "2":
+                img.put("#ea4335", (x,y))
+            elif pattern[y][x] == "3":
+                img.put("#d9d9d9", (x,y))
+            elif pattern[y][x] == "4":
+                img.put("#b7b7b7", (x,y))
+            else:
+                pass
+                #img.put("#000000", (x,y))
+            
+    return img
 
 
 
