@@ -18,30 +18,227 @@ mg_ammo = 0
 alive = True
 
 def north_stationary():
-    current_sprite = canvas.create_image(current_x, current_y, image = , anchor = "center")
+    current_sprite = canvas.create_image(current_x, current_y, image = north_stationary_player, anchor = "center")
 def east_stationary():
-    current_sprite = canvas.create_image(current_x, current_y, image = , anchor = "center")
+    current_sprite = canvas.create_image(current_x, current_y, image = east_stationary_player, anchor = "center")
 def south_stationary():
-    current_sprite = canvas.create_image(current_x, current_y, image = , anchor = "center")
+    current_sprite = canvas.create_image(current_x, current_y, image = south_stationary_player, anchor = "center")
 def west_stationary():
-    current_sprite = canvas.create_image(current_x, current_y, image = , anchor = "center")
+    current_sprite = canvas.create_image(current_x, current_y, image = west_stationary_player, anchor = "center")
 
 def make_north_stationary_player():
+    pattern = [
+        "0000000000011100000000000",
+        "0000000000111110000000000",
+        "0000000001111111000000000",
+        "0000000004111114000000000",
+        "0000000000411140000000000",
+        "0000000000044400000000000",
+        "0000000000444440000000000",
+        "0000000001444441000000000",
+        "0000000001444441000000000",
+        "0000000001444441000000000",
+        "0000000001444441000000000",
+        "0000000001444441000000000",
+        "0000000001444441000000000",
+        "0000000003444443000000000",
+        "0000000003444443000000000",
+        "0000000000444440000000000",
+        "0000000000444440000000000",
+        "0000000000444440000000000",
+        "0000000000440440000000000",
+        "0000000000440440000000000",
+        "0000000000440440000000000",
+        "0000000000440440000000000",
+        "0000000000440440000000000",
+        "0000000000440440000000000",
+        "0000000004440444000000000"
+    ]
+    h = len(pattern)
+    w = len(pattern[0])
+    img = tk.PhotoImage(width=w, height=h)
+
+    for y in range(h):
+        for x in range(w):
+            if pattern[y][x] == "1":
+                img.put("#efefef", (x,y))
+            elif pattern[y][x] == "2":
+                img.put("#ea4335", (x,y))
+            elif pattern[y][x] == "3":
+                img.put("#d9d9d9", (x,y))
+            elif pattern[y][x] == "4":
+                img.put("#b7b7b7", (x,y))
+            else:
+                pass
+                #img.put("#000000", (x,y))
+            
+    return img
 def make_east_stationary_player():
+    pattern = [
+        "0000000001100000000000000",
+        "0000000011440000000000000",
+        "0000000111424000000000000",
+        "0000000144444000000000000",
+        "0000000044440000000000000",
+        "0000000004400000000000000",
+        "0000000044440000000000000",
+        "0000000041140000000000000",
+        "0000000041140000000000000",
+        "0000000041140000000000000",
+        "0000000041143300000000000",
+        "0000000041143300000000000",
+        "0000000044110000000000000",
+        "0000000044411100000000000",
+        "0000000044441100000000000",
+        "0000000044440000000000000",
+        "0000000044440000000000000",
+        "0000000044440000000000000",
+        "0000000004400000000000000",
+        "0000000004400000000000000",
+        "0000000004400000000000000",
+        "0000000004400000000000000",
+        "0000000004400000000000000",
+        "0000000004440000000000000",
+        "0000000004444000000000000"
+    ]
+    h = len(pattern)
+    w = len(pattern[0])
+    img = tk.PhotoImage(width=w, height=h)
+
+    for y in range(h):
+        for x in range(w):
+            if pattern[y][x] == "1":
+                img.put("#efefef", (x,y))
+            elif pattern[y][x] == "2":
+                img.put("#ea4335", (x,y))
+            elif pattern[y][x] == "3":
+                img.put("#d9d9d9", (x,y))
+            elif pattern[y][x] == "4":
+                img.put("#b7b7b7", (x,y))
+            else:
+                pass
+                #img.put("#000000", (x,y))
+            
+    return img
 def make_south_stationary_player():
+    pattern = [
+        "0000000000011100000000000",
+        "0000000000144410000000000",
+        "0000000001424241000000000",
+        "0000000004444444000000000",
+        "0000000000411140000000000",
+        "0000000000044400000000000",
+        "0000000000444440000000000",
+        "0000000003444443000000000",
+        "0000000003444443000000000",
+        "0000000003444443000000000",
+        "0000000003444443000000000",
+        "0000000003444443000000000",
+        "0000000003444443000000000",
+        "0000000001444441000000000",
+        "0000000001444441000000000",
+        "0000000000444440000000000",
+        "0000000000444440000000000",
+        "0000000000444440000000000",
+        "0000000000440440000000000",
+        "0000000000440440000000000",
+        "0000000000440440000000000",
+        "0000000000440440000000000",
+        "0000000000440440000000000",
+        "0000000000440440000000000",
+        "0000000004440444000000000"
+    ]
+    h = len(pattern)
+    w = len(pattern[0])
+    img = tk.PhotoImage(width=w, height=h)
+
+    for y in range(h):
+        for x in range(w):
+            if pattern[y][x] == "1":
+                img.put("#efefef", (x,y))
+            elif pattern[y][x] == "2":
+                img.put("#ea4335", (x,y))
+            elif pattern[y][x] == "3":
+                img.put("#d9d9d9", (x,y))
+            elif pattern[y][x] == "4":
+                img.put("#b7b7b7", (x,y))
+            else:
+                pass
+                #img.put("#000000", (x,y))
+            
+    return img
 def make_west_stationary_player():
+    pattern = [
+        "0000000000000011000000000",
+        "0000000000000441100000000",
+        "0000000000004241110000000",
+        "0000000000004444410000000",
+        "0000000000000444400000000",
+        "0000000000000044000000000",
+        "0000000000000444400000000",
+        "0000000000000411400000000",
+        "0000000000000411400000000",
+        "0000000000000411400000000",
+        "0000000000033411400000000",
+        "0000000000033411400000000",
+        "0000000000000114400000000",
+        "0000000000011144400000000",
+        "0000000000011444400000000",
+        "0000000000000444400000000",
+        "0000000000000444400000000",
+        "0000000000000444400000000",
+        "0000000000000044000000000",
+        "0000000000000044000000000",
+        "0000000000000044000000000",
+        "0000000000000044000000000",
+        "0000000000000044000000000",
+        "0000000000000444000000000",
+        "0000000000004444000000000"
+    ]
+    h = len(pattern)
+    w = len(pattern[0])
+    img = tk.PhotoImage(width=w, height=h)
+
+    for y in range(h):
+        for x in range(w):
+            if pattern[y][x] == "1":
+                img.put("#efefef", (x,y))
+            elif pattern[y][x] == "2":
+                img.put("#ea4335", (x,y))
+            elif pattern[y][x] == "3":
+                img.put("#d9d9d9", (x,y))
+            elif pattern[y][x] == "4":
+                img.put("#b7b7b7", (x,y))
+            else:
+                pass
+                #img.put("#000000", (x,y))
+            
+    return img
+
 def make_north_stationary_pistol():
+    pattern
 def make_east_stationary_pistol():
+    pattern
 def make_south_stationary_pistol():
+    pattern
 def make_west_stationary_pistol():
+    pattern
 def make_north_stationary_rifle():
+    pattern
 def make_east_stationary_rifle():
+    pattern
 def make_south_stationary_rifle():
+    pattern
 def make_west_stationary_rifle():
+    pattern
 def make_north_stationary_MG():
+    pattern
 def make_east_stationary_MG():
+    pattern
 def make_south_stationary_MG():
+    pattern
 def make_west_stationary_MG():
+    pattern
 
 
 
@@ -531,6 +728,11 @@ spawn_x = VIEW_DISTANCE // 2    #Starts player in center of map
 spawn_y = VIEW_DISTANCE // 2    #Starts player in center of map
 
 
+north_stationary_player = make_north_stationary_player()
+east_stationary_player = make_east_stationary_player()
+south_stationary_player = make_south_stationary_player()
+west_stationary_player = make_west_stationary_player()
+
 east_move_1_img= make_east_moving_player_1()
 east_move_2_img= make_east_moving_player_2()
 north_move_1_img = make_north_moving_player_1()
@@ -540,31 +742,31 @@ south_move_2_img = make_south_moving_player_2()
 west_move_1_img = make_west_moving_player_1()
 west_move_2_img = make_west_moving_player_2()
 
-north_stationary_player_img= make_north_stationary_player()
-east_stationary_player_img= make_east_stationary_player()
-south_stationary_player_img= make_south_stationary_player()
-west_stationary_player_img= make_west_stationary_player()
-north_stationary_pistol_img= make_north_stationary_pistol()
-east_stationary_pistol_img= make_east_stationary_pistol()
-south_stationary_pistol_img= make_south_stationary_pistol()
-west_stationary_pistol_img= make_west_stationary_pistol()
-north_stationary_rifle_img= make_north_stationary_rifle()
-east_stationary_rifle_img= make_east_stationary_rifle()
-south_stationary_rifle_img= make_south_stationary_rifle()
-west_stationary_rifle_img= make_west_stationary_rifle()
-north_stationary_MG_img= make_north_stationary_MG()
-east_stationary_MG_img= make_east_stationary_MG()
-south_stationary_MG_img= make_south_stationary_MG()
-west_stationary_MG_img= make_west_stationary_MG()
+north_stationary_player_img = make_north_stationary_player()
+east_stationary_player_img = make_east_stationary_player()
+south_stationary_player_img = make_south_stationary_player()
+west_stationary_player_img = make_west_stationary_player()
+north_stationary_pistol_img = make_north_stationary_pistol()
+east_stationary_pistol_img = make_east_stationary_pistol()
+south_stationary_pistol_img = make_south_stationary_pistol()
+west_stationary_pistol_img = make_west_stationary_pistol()
+north_stationary_rifle_img = make_north_stationary_rifle()
+east_stationary_rifle_img = make_east_stationary_rifle()
+south_stationary_rifle_img = make_south_stationary_rifle()
+west_stationary_rifle_img = make_west_stationary_rifle()
+north_stationary_MG_img = make_north_stationary_MG()
+east_stationary_MG_img = make_east_stationary_MG()
+south_stationary_MG_img = make_south_stationary_MG()
+west_stationary_MG_img = make_west_stationary_MG()
 
 north_moving_pistol_1_img = north_moving_player_pistol_1()
 north_moving_pistol_2_img = north_moving_player_pistol_2()
-east_moving_pistol_1_img= east_moving_player_pistol_1()
-east_moving_pistol_2_img= east_moving_player_pistol_2()
+east_moving_pistol_1_img = east_moving_player_pistol_1()
+east_moving_pistol_2_img = east_moving_player_pistol_2()
 south_moving_pistol_1_img = south_moving_player_pistol_1()
 south_moving_pistol_2_img = south_moving_player_pistol_2()
-west_moving_pistol_1_img= west_moving_player_pistol_1()
-west_moving_pistol_2_img= west_moving_player_pistol_2()
+west_moving_pistol_1_img = west_moving_player_pistol_1()
+west_moving_pistol_2_img = west_moving_player_pistol_2()
 
 north_moving_rifle_1_img = north_moving_player_rifle_1()
 north_moving_rifle_2_img = north_moving_player_rifle_2()
@@ -589,30 +791,30 @@ west_stationary_raptor_img = make_west_stationary_raptor()
 west_stationary_trike_img = make_west_stationary_trike()
 west_stationary_stego_img = make_west_stationary_stego()
 
-_img = make_east_stationary_trex()
-_img = make_east_stationary_raptor()
-_img = make_east_stationary_trike()
-_img = make_east_stationary_stego()
+east_stationary_trex_img = make_east_stationary_trex()
+east_stationary_raptor_img = make_east_stationary_raptor()
+east_stationary_trike_img = make_east_stationary_trike()
+east_stationary_stego_img = make_east_stationary_stego()
 
-_img = make_west_moving_trex_1()
-_img = make_west_moving_raptor_1()
-_img = make_west_moving_trike_1()
-_img = make_west_moving_stego_1()
-_img = make_east_moving_trex_1()
-_img = make_east_moving_raptor_1()
-_img = make_east_moving_trike_1()
-_img = make_east_moving_stego_1()
+west_moving_trex_1_img = make_west_moving_trex_1()
+west_moving_raptor_1_img = make_west_moving_raptor_1()
+west_moving_trike_1_img = make_west_moving_trike_1()
+west_moving_stego_1_img = make_west_moving_stego_1()
+east_moving_trex_1_img = make_east_moving_trex_1()
+east_moving_raptor_1_img = make_east_moving_raptor_1()
+east_moving_trike_1_img = make_east_moving_trike_1()
+east_moving_stego_1_img = make_east_moving_stego_1()
 
-_img = make_west_moving_trex_2()
-_img = make_west_moving_raptor_2()
-_img = make_west_moving_trike_2()
-_img = make_west_moving_stego_2()
-_img = make_east_moving_trex_2()
-_img = make_east_moving_raptor_2()
-_img = make_east_moving_trike_2()
-_img = make_east_moving_stego_2()
+west_moving_trex_2_img = make_west_moving_trex_2()
+west_moving_raptor_2_img = make_west_moving_raptor_2()
+west_moving_trike_2_img = make_west_moving_trike_2()
+west_moving_stego_2_img = make_west_moving_stego_2()
+east_moving_trex_2_img = make_east_moving_trex_2()
+east_moving_raptor_2_img = make_east_moving_raptor_2()
+east_moving_trike_2_img = make_east_moving_trike_2()
+east_moving_stego_2_img = make_east_moving_stego_2()
 
-_img = make_helicopter()
+helicopter_img = make_helicopter()
 
 
 current_x = 300
