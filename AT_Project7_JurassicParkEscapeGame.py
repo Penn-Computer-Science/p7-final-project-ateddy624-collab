@@ -4,12 +4,47 @@ from tkinter import font
 import random
 import math
 
-VIEW_DISTANCE = 400     #Size of the viewable area
-WORLD_SIZE = 1600       #Size of world
+VIEW_DISTANCE = 800     #Size of the viewable area
+WORLD_SIZE = 3200       #Size of world
 MOVE_SPEED = 20         #How far the player moves per step
 STEP_COUNTER = 0
+HAVE_PISTOL = False
+HAVE_RIFLE = False
+HAVE_MG = False
+pistol_ammo = 0
+rifle_ammo = 0
+mg_ammo = 0
 
 alive = True
+
+def north_stationary():
+    current_sprite = canvas.create_image(current_x, current_y, image = , anchor = "center")
+def east_stationary():
+    current_sprite = canvas.create_image(current_x, current_y, image = , anchor = "center")
+def south_stationary():
+    current_sprite = canvas.create_image(current_x, current_y, image = , anchor = "center")
+def west_stationary():
+    current_sprite = canvas.create_image(current_x, current_y, image = , anchor = "center")
+
+def make_north_stationary_player():
+def make_east_stationary_player():
+def make_south_stationary_player():
+def make_west_stationary_player():
+def make_north_stationary_pistol():
+def make_east_stationary_pistol():
+def make_south_stationary_pistol():
+def make_west_stationary_pistol():
+def make_north_stationary_rifle():
+def make_east_stationary_rifle():
+def make_south_stationary_rifle():
+def make_west_stationary_rifle():
+def make_north_stationary_MG():
+def make_east_stationary_MG():
+def make_south_stationary_MG():
+def make_west_stationary_MG():
+
+
+
 
 def make_east_moving_player_1():
     pattern = [
@@ -56,8 +91,7 @@ def make_east_moving_player_1():
             else:
                 pass
             
-    return img
-            
+    return img       
 def make_east_moving_player_2():
     pattern = [
         "0000000001100000000",
@@ -104,8 +138,7 @@ def make_east_moving_player_2():
                 pass
                 #img.put("#000000", (x,y))
             
-    return img
-            
+    return img          
 def make_west_moving_player_1():
     pattern = [
         "0000000011000000000",
@@ -152,8 +185,7 @@ def make_west_moving_player_1():
                 pass
                 #img.put("#000000", (x,y))
             
-    return img
-            
+    return img         
 def make_west_moving_player_2():
     pattern = [
         "0000000011000000000",
@@ -200,8 +232,7 @@ def make_west_moving_player_2():
                 pass
                 #img.put("#000000", (x,y))
             
-    return img
-            
+    return img          
 def make_south_moving_player_1():
     pattern = [
         "0000011100000",
@@ -250,8 +281,7 @@ def make_south_moving_player_1():
                 pass
                 #img.put("#000000", (x,y))
             
-    return img
-            
+    return img          
 def make_south_moving_player_2():
     pattern = [
         "0000011100000",
@@ -300,8 +330,7 @@ def make_south_moving_player_2():
                 pass
                 #img.put("#000000", (x,y))
             
-    return img
-            
+    return img        
 def make_north_moving_player_1():
     pattern = [
         "0000011100000",
@@ -351,7 +380,6 @@ def make_north_moving_player_1():
     
             
     return img
-            
 def make_north_moving_player_2():
     pattern = [
         "0000011100000",
@@ -400,7 +428,63 @@ def make_north_moving_player_2():
                 pass
             
     return img
-            
+
+def north_moving_player_pistol_1():
+def north_moving_player_pistol_2():
+def east_moving_player_pistol_1():
+def east_moving_player_pistol_2():
+def south_moving_player_pistol_1():
+def south_moving_player_pistol_2():
+def west_moving_player_pistol_1():
+def west_moving_player_pistol_2():
+
+def north_moving_player_rifle_1():
+def north_moving_player_rifle_2():
+def east_moving_player_rifle_1():
+def east_moving_player_rifle_2():
+def south_moving_player_rifle_1():
+def south_moving_player_rifle_2():
+def west_moving_player_rifle_1():
+def west_moving_player_rifle_2():
+
+def north_moving_player_MG_1():
+def north_moving_player_MG_2():
+def east_moving_player_MG_1():
+def east_moving_player_MG_2():
+def south_moving_player_MG_1():
+def south_moving_player_MG_2():
+def west_moving_player_MG_1():
+def west_moving_player_MG_2():
+
+def make_west_stationary_trex():
+def make_west_stationary_raptor():
+def make_west_stationary_trike():
+def make_west_stationary_stego():
+
+def make_east_stationary_trex():
+def make_east_stationary_raptor():
+def make_east_stationary_trike():
+def make_east_stationary_stego():
+
+def make_west_moving_trex_1():
+def make_west_moving_raptor_1():
+def make_west_moving_trike_1():
+def make_west_moving_stego_1():
+def make_east_moving_trex_1():
+def make_east_moving_raptor_1():
+def make_east_moving_trike_1():
+def make_east_moving_stego_1():
+
+def make_west_moving_trex_2():
+def make_west_moving_raptor_2():
+def make_west_moving_trike_2():
+def make_west_moving_stego_2():
+def make_east_moving_trex_2():
+def make_east_moving_raptor_2():
+def make_east_moving_trike_2():
+def make_east_moving_stego_2():
+
+def make_helicopter():
 
 #Declare the root and name it
 root = tk.Tk()
@@ -417,17 +501,34 @@ canvas = tk.Canvas(
     #highlightbackground = "#0BA5F8"
 )
 
+def move_viewport():
+    global current_sprite
+    #center of player
+    x1, y1, x2, y2 = canvas.bbox(current_sprite)
+    current_sprite_center_x = (x1 + x2) / 2
+    current_sprite_center_y = (y1 + y2) / 2
+
+    #frame must have world in view
+    max_offset = WORLD_SIZE - VIEW_DISTANCE
+    left = min(max(current_sprite_center_x - VIEW_DISTANCE / 2, 0), max_offset)
+    top = min(max(current_sprite_center_y - VIEW_DISTANCE / 2, 0), max_offset)
+
+    #actually moves the frame
+    canvas.xview_moveto(left / WORLD_SIZE)
+    canvas.yview_moveto(top / WORLD_SIZE)
+
 #Executes the set up
 canvas.pack()
 
 #Optional line drawing to show movement can be inserted HERE:
+for line in range(0, WORLD_SIZE + 1, 250):
+    canvas.create_line(line, 0, line, WORLD_SIZE, fill = "#0D4F00")
+    canvas.create_line(0, line, WORLD_SIZE, line, fill = "#0D4F00")
 
 #Creates the world border
 #canvas.create_rectangle(5, 5, WORLD_SIZE - 5, WORLD_SIZE - 5, outline = "#0BA5F8", width = 5)
 spawn_x = VIEW_DISTANCE // 2    #Starts player in center of map
 spawn_y = VIEW_DISTANCE // 2    #Starts player in center of map
-
-
 
 
 east_move_1_img= make_east_moving_player_1()
@@ -438,6 +539,81 @@ south_move_1_img = make_south_moving_player_1()
 south_move_2_img = make_south_moving_player_2()
 west_move_1_img = make_west_moving_player_1()
 west_move_2_img = make_west_moving_player_2()
+
+north_stationary_player_img= make_north_stationary_player()
+east_stationary_player_img= make_east_stationary_player()
+south_stationary_player_img= make_south_stationary_player()
+west_stationary_player_img= make_west_stationary_player()
+north_stationary_pistol_img= make_north_stationary_pistol()
+east_stationary_pistol_img= make_east_stationary_pistol()
+south_stationary_pistol_img= make_south_stationary_pistol()
+west_stationary_pistol_img= make_west_stationary_pistol()
+north_stationary_rifle_img= make_north_stationary_rifle()
+east_stationary_rifle_img= make_east_stationary_rifle()
+south_stationary_rifle_img= make_south_stationary_rifle()
+west_stationary_rifle_img= make_west_stationary_rifle()
+north_stationary_MG_img= make_north_stationary_MG()
+east_stationary_MG_img= make_east_stationary_MG()
+south_stationary_MG_img= make_south_stationary_MG()
+west_stationary_MG_img= make_west_stationary_MG()
+
+north_moving_pistol_1_img = north_moving_player_pistol_1()
+north_moving_pistol_2_img = north_moving_player_pistol_2()
+east_moving_pistol_1_img= east_moving_player_pistol_1()
+east_moving_pistol_2_img= east_moving_player_pistol_2()
+south_moving_pistol_1_img = south_moving_player_pistol_1()
+south_moving_pistol_2_img = south_moving_player_pistol_2()
+west_moving_pistol_1_img= west_moving_player_pistol_1()
+west_moving_pistol_2_img= west_moving_player_pistol_2()
+
+north_moving_rifle_1_img = north_moving_player_rifle_1()
+north_moving_rifle_2_img = north_moving_player_rifle_2()
+east_moving_rifle_1_img = east_moving_player_rifle_1()
+east_moving_rifle_2_img = east_moving_player_rifle_2()
+south_moving_rifle_1_img = south_moving_player_rifle_1()
+south_moving_rifle_2_img = south_moving_player_rifle_2()
+west_moving_rifle_1_img = west_moving_player_rifle_1()
+west_moving_rifle_2_img = west_moving_player_rifle_2()
+
+north_moving_MG_1_img = north_moving_player_MG_1()
+north_moving_MG_2_img = north_moving_player_MG_2()
+east_moving_MG_1_img = east_moving_player_MG_1()
+east_moving_MG_2_img = east_moving_player_MG_2()
+south_moving_MG_1_img = south_moving_player_MG_1()
+south_moving_MG_2_img = south_moving_player_MG_2()
+west_moving_MG_1_img = west_moving_player_MG_1()
+west_moving_MG_2_img = west_moving_player_MG_2()
+
+west_stationary_trex_img = make_west_stationary_trex()
+west_stationary_raptor_img = make_west_stationary_raptor()
+west_stationary_trike_img = make_west_stationary_trike()
+west_stationary_stego_img = make_west_stationary_stego()
+
+_img = make_east_stationary_trex()
+_img = make_east_stationary_raptor()
+_img = make_east_stationary_trike()
+_img = make_east_stationary_stego()
+
+_img = make_west_moving_trex_1()
+_img = make_west_moving_raptor_1()
+_img = make_west_moving_trike_1()
+_img = make_west_moving_stego_1()
+_img = make_east_moving_trex_1()
+_img = make_east_moving_raptor_1()
+_img = make_east_moving_trike_1()
+_img = make_east_moving_stego_1()
+
+_img = make_west_moving_trex_2()
+_img = make_west_moving_raptor_2()
+_img = make_west_moving_trike_2()
+_img = make_west_moving_stego_2()
+_img = make_east_moving_trex_2()
+_img = make_east_moving_raptor_2()
+_img = make_east_moving_trike_2()
+_img = make_east_moving_stego_2()
+
+_img = make_helicopter()
+
 
 current_x = 300
 current_y = 300
@@ -454,21 +630,27 @@ def move_left(event):
     STEP_COUNTER+=1
 
     px1, py1, px2, py2 = canvas.bbox(current_sprite)
-    
-    counter = 0
-    if len(current_sprite_list)>0:
-        for i in range(len(current_sprite_list)):
-            canvas.delete(current_sprite) 
-    if STEP_COUNTER %2 == 0:
-        current_sprite = canvas.create_image(current_x, current_y, image = west_move_2_img, anchor = "center")
-    else:
-        current_sprite = canvas.create_image(current_x, current_y, image = west_move_1_img, anchor = "center")
-    current_sprite_list.append(current_sprite)
-    if px1 <= 30:
-        pass
-    else:
-        current_x -= MOVE_SPEED
-        canvas.move(current_sprite, -MOVE_SPEED, 0) 
+    if HAVE_MG == False and HAVE_PISTOL == False and HAVE_RIFLE == False:
+        if len(current_sprite_list)>0:
+            for i in range(len(current_sprite_list)):
+                canvas.delete(current_sprite) 
+        if STEP_COUNTER %2 == 0:
+            current_sprite = canvas.create_image(current_x, current_y, image = west_move_2_img, anchor = "center")
+        else:
+            current_sprite = canvas.create_image(current_x, current_y, image = west_move_1_img, anchor = "center")
+        current_sprite_list.append(current_sprite)
+        if px1 <= 30:
+            pass
+        else:
+            current_x -= MOVE_SPEED
+            canvas.move(current_sprite, -MOVE_SPEED, 0) 
+
+
+
+
+
+    west_stationary()
+    move_viewport()
 def move_right(event):
     global current_sprite_img, current_x, current_sprite, current_sprite_list, STEP_COUNTER
     STEP_COUNTER+=1
@@ -489,6 +671,7 @@ def move_right(event):
     else:
         current_x += MOVE_SPEED
         canvas.move(current_sprite, MOVE_SPEED, 0)
+    move_viewport()
 def move_up(event):
     global current_sprite_img, current_y, current_sprite, current_sprite_list, STEP_COUNTER
     STEP_COUNTER+=1
@@ -509,6 +692,7 @@ def move_up(event):
     else:
         current_y -= MOVE_SPEED
         canvas.move(current_sprite, 0, -MOVE_SPEED) 
+    move_viewport()
 def move_down(event):
     global current_sprite_img, current_y, current_sprite, current_sprite_list, STEP_COUNTER
     STEP_COUNTER+=1
@@ -529,6 +713,7 @@ def move_down(event):
     else:
         current_y += MOVE_SPEED
         canvas.move(current_sprite, 0, MOVE_SPEED)
+    move_viewport()
 
 root.bind("a", move_left)
 root.bind("d", move_right)
@@ -539,5 +724,17 @@ root.bind("<Left>", move_left)
 root.bind("<Right>", move_right)
 root.bind("<Up>", move_up)
 root.bind("<Down>", move_down)
+
+#def random_spawn_weapon():
+#def random_spawn_ammo():
+#def random_spawn_peaceful():
+#def random_spawn_predator():
+
+
+
+
+
+move_viewport()
+canvas.focus_set()
 
 root.mainloop()
