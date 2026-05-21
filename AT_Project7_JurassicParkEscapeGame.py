@@ -10,7 +10,7 @@ MOVE_SPEED = 20         #How far the player moves per step
 STEP_COUNTER = 0
 HAVE_PISTOL = False
 HAVE_RIFLE = False
-HAVE_MG = False
+HAVE_MG = True
 pistol_ammo = 0
 rifle_ammo = 0
 mg_ammo = 0
@@ -844,7 +844,6 @@ def make_west_stationary_MG():
                 #img.put("#000000", (x,y))
             
     return img
-
 
 
 def make_east_moving_player_1():
@@ -2178,12 +2177,12 @@ def north_moving_player_MG_2():
         "000000000444440000",
         "000000000444440000",
         "000000000440440000",
-        "000000000330440000",
-        "000000000330550000",
-        "000000000330550000",
-        "000000000110550000",
-        "000000000110550000",
-        "000000001110555000"
+        "000000000440330000",
+        "000000000550330000",
+        "000000000550330000",
+        "000000000550110000",
+        "000000000550110000",
+        "000000005550111000"
     ]
     h = len(pattern)
     w = len(pattern[0])
@@ -2267,30 +2266,30 @@ def east_moving_player_MG_1():
     return img
 def east_moving_player_MG_2():
     pattern = [
-        "0000000001100000000000000"
-        "0000000011440000000000000"
-        "0000000111424000000000000"
-        "0000000144444000000000000"
-        "0000000044440000000000000"
-        "0000000004400000000000000"
-        "0000000044440000000000000"
-        "0000000041140000000000000"
-        "0000000041140000000000000"
-        "0000000011440000000000000"
-        "0000000011440033000000000"
-        "0000000011443337000000000"
-        "0000000011143307777700000"
-        "0000000041117777887777770"
-        "0000000044170777657777770"
-        "0000000044477700885000000"
-        "0000000044440000658000000"
-        "0000000044440000885000000"
-        "0000000444044000658000000"
-        "0000004440044400885000000"
-        "0000044400004440658000000"
-        "0000444000000440885000000"
-        "0004440000000440000000000"
-        "0004400000000440000000000"
+        "0000000001100000000000000",
+        "0000000011440000000000000",
+        "0000000111424000000000000",
+        "0000000144444000000000000",
+        "0000000044440000000000000",
+        "0000000004400000000000000",
+        "0000000044440000000000000",
+        "0000000041140000000000000",
+        "0000000041140000000000000",
+        "0000000011440000000000000",
+        "0000000011440033000000000",
+        "0000000011443337000000000",
+        "0000000011143307777700000",
+        "0000000041117777887777770",
+        "0000000044170777657777770",
+        "0000000044477700885000000",
+        "0000000044440000658000000",
+        "0000000044440000885000000",
+        "0000000444044000658000000",
+        "0000004440044400885000000",
+        "0000044400004440658000000",
+        "0000444000000440885000000",
+        "0004440000000440000000000",
+        "0004400000000440000000000",
         "0004400000000444000000000"
     ]
     h = len(pattern)
@@ -2565,7 +2564,6 @@ def make_west_stationary_trex():
                 pass
             
     return img
-
 def make_west_stationary_raptor():
     pattern = [
 
@@ -2590,7 +2588,6 @@ def make_west_stationary_raptor():
                 pass
             
     return img
-
 def make_west_stationary_trike():
     pattern = [
 
@@ -2615,7 +2612,6 @@ def make_west_stationary_trike():
                 pass
             
     return img
-
 def make_west_stationary_stego():
     pattern = [
 
@@ -2640,7 +2636,6 @@ def make_west_stationary_stego():
                 pass
             
     return img
-
 def make_east_stationary_trex():
     pattern = [
 
@@ -2665,7 +2660,6 @@ def make_east_stationary_trex():
                 pass
             
     return img
-
 def make_east_stationary_raptor():
     pattern = [
 
@@ -2690,7 +2684,6 @@ def make_east_stationary_raptor():
                 pass
             
     return img
-
 def make_east_stationary_trike():
     pattern = [
 
@@ -2715,7 +2708,6 @@ def make_east_stationary_trike():
                 pass
             
     return img
-
 def make_east_stationary_stego():
     pattern = [
 
@@ -2740,7 +2732,6 @@ def make_east_stationary_stego():
                 pass
             
     return img
-
 def make_west_moving_trex_1():
     pattern = [
 
@@ -2765,7 +2756,6 @@ def make_west_moving_trex_1():
                 pass
             
     return img
-
 def make_west_moving_raptor_1():
     pattern = [
 
@@ -2790,7 +2780,6 @@ def make_west_moving_raptor_1():
                 pass
             
     return img
-
 def make_west_moving_trike_1():
     pattern = [
 
@@ -2815,7 +2804,6 @@ def make_west_moving_trike_1():
                 pass
             
     return img
-
 def make_west_moving_stego_1():
     pattern = [
 
@@ -2840,7 +2828,6 @@ def make_west_moving_stego_1():
                 pass
             
     return img
-
 def make_east_moving_trex_1():
     pattern = [
 
@@ -2865,7 +2852,6 @@ def make_east_moving_trex_1():
                 pass
             
     return img
-
 def make_east_moving_raptor_1():
     pattern = [
 
@@ -2890,7 +2876,6 @@ def make_east_moving_raptor_1():
                 pass
             
     return img
-
 def make_east_moving_trike_1():
     pattern = [
 
@@ -2915,7 +2900,6 @@ def make_east_moving_trike_1():
                 pass
             
     return img
-
 def make_east_moving_stego_1():
     pattern = [
 
@@ -2940,7 +2924,6 @@ def make_east_moving_stego_1():
                 pass
             
     return img
-
 def make_west_moving_trex_2():
     pattern = [
 
@@ -2965,7 +2948,6 @@ def make_west_moving_trex_2():
                 pass
             
     return img
-
 def make_west_moving_raptor_2():
     pattern = [
 
@@ -2990,7 +2972,6 @@ def make_west_moving_raptor_2():
                 pass
             
     return img
-
 def make_west_moving_trike_2():
     pattern = [
 
@@ -3015,7 +2996,6 @@ def make_west_moving_trike_2():
                 pass
             
     return img
-
 def make_west_moving_stego_2():
     pattern = [
 
@@ -3040,7 +3020,6 @@ def make_west_moving_stego_2():
                 pass
             
     return img
-
 def make_east_moving_trex_2():
     pattern = [
 
@@ -3065,7 +3044,6 @@ def make_east_moving_trex_2():
                 pass
             
     return img
-
 def make_east_moving_raptor_2():
     pattern = [
 
@@ -3090,7 +3068,6 @@ def make_east_moving_raptor_2():
                 pass
             
     return img
-
 def make_east_moving_trike_2():
     pattern = [
 
@@ -3115,7 +3092,6 @@ def make_east_moving_trike_2():
                 pass
             
     return img
-
 def make_east_moving_stego_2():
     pattern = [
 
@@ -3140,10 +3116,19 @@ def make_east_moving_stego_2():
                 pass
             
     return img
-
+'''
 def make_helicopter():
     pattern = [
-
+        "5555555555"
+        "5555555555"
+        "5555555555"
+        "5555555555"
+        "5555555555"
+        "5555555555"
+        "5555555555"
+        "5555555555"
+        "5555555555"
+        "5555555555"
     ]
     h = len(pattern)
     w = len(pattern[0])
@@ -3165,7 +3150,7 @@ def make_helicopter():
                 pass
             
     return img
-'''
+
 
 
 #Declare the root and name it
@@ -3299,9 +3284,9 @@ east_moving_trex_2_img = make_east_moving_trex_2()
 east_moving_raptor_2_img = make_east_moving_raptor_2()
 east_moving_trike_2_img = make_east_moving_trike_2()
 east_moving_stego_2_img = make_east_moving_stego_2()
+'''
 
 helicopter_img = make_helicopter()
-'''
 
 
 current_x = 300
@@ -3313,6 +3298,7 @@ current_sprite_list = []
 
 current_sprite = canvas.create_image(current_x, current_y, image = south_move_1_img, anchor = "center")
 current_sprite_list.append(current_sprite)
+helicopter_sprite = canvas.create_image(100, 100, image = helicopter_img, anchor = "center")
 
 def move_left(event):
     global current_sprite_img, current_x, current_sprite, current_sprite_list, STEP_COUNTER
@@ -3333,11 +3319,48 @@ def move_left(event):
         else:
             current_x -= MOVE_SPEED
             canvas.move(current_sprite, -MOVE_SPEED, 0)
-    #elif HAVE_MG == False and 
-
-
-
-
+    elif HAVE_MG == False and HAVE_PISTOL == False and HAVE_RIFLE == True:
+        if len(current_sprite_list)>0:
+            for i in range(len(current_sprite_list)):
+                canvas.delete(current_sprite) 
+        if STEP_COUNTER %2 == 0:
+            current_sprite = canvas.create_image(current_x, current_y, image = west_moving_rifle_1_img, anchor = "center")
+        else:
+            current_sprite = canvas.create_image(current_x, current_y, image = west_moving_rifle_2_img, anchor = "center")
+        current_sprite_list.append(current_sprite)
+        if px1 <= 30:
+            pass
+        else:
+            current_x -= MOVE_SPEED
+            canvas.move(current_sprite, -MOVE_SPEED, 0)
+    elif HAVE_MG == False and HAVE_PISTOL == True and HAVE_RIFLE == False:
+        if len(current_sprite_list)>0:
+            for i in range(len(current_sprite_list)):
+                canvas.delete(current_sprite) 
+        if STEP_COUNTER %2 == 0:
+            current_sprite = canvas.create_image(current_x, current_y, image = west_moving_pistol_1_img, anchor = "center")
+        else:
+            current_sprite = canvas.create_image(current_x, current_y, image = west_moving_pistol_2_img, anchor = "center")
+        current_sprite_list.append(current_sprite)
+        if px1 <= 30:
+            pass
+        else:
+            current_x -= MOVE_SPEED
+            canvas.move(current_sprite, -MOVE_SPEED, 0)
+    elif HAVE_MG == True and HAVE_PISTOL == False and HAVE_RIFLE == False:
+        if len(current_sprite_list)>0:
+            for i in range(len(current_sprite_list)):
+                canvas.delete(current_sprite) 
+        if STEP_COUNTER %2 == 0:
+            current_sprite = canvas.create_image(current_x, current_y, image = west_moving_MG_1_img, anchor = "center")
+        else:
+            current_sprite = canvas.create_image(current_x, current_y, image = west_moving_MG_2_img, anchor = "center")
+        current_sprite_list.append(current_sprite)
+        if px1 <= 30:
+            pass
+        else:
+            current_x -= MOVE_SPEED
+            canvas.move(current_sprite, -MOVE_SPEED, 0)
 
     #west_stationary(current_sprite)
     move_viewport()
@@ -3346,21 +3369,63 @@ def move_right(event):
     STEP_COUNTER+=1
 
     px1, py1, px2, py2 = canvas.bbox(current_sprite)
-    
-    counter = 0
-    if len(current_sprite_list)>0:
-        for i in range(len(current_sprite_list)):
-            canvas.delete(current_sprite) 
-    if STEP_COUNTER %2 == 0:
-        current_sprite = canvas.create_image(current_x, current_y, image = east_move_2_img, anchor = "center")
-    else:
-        current_sprite = canvas.create_image(current_x, current_y, image = east_move_1_img, anchor = "center")
-    current_sprite_list.append(current_sprite)
-    if px1 >= WORLD_SIZE-30:
-        pass
-    else:
-        current_x += MOVE_SPEED
-        canvas.move(current_sprite, MOVE_SPEED, 0)
+    if HAVE_MG == False and HAVE_PISTOL == False and HAVE_RIFLE == False:
+        if len(current_sprite_list)>0:
+            for i in range(len(current_sprite_list)):
+                canvas.delete(current_sprite) 
+        if STEP_COUNTER %2 == 0:
+            current_sprite = canvas.create_image(current_x, current_y, image = east_move_2_img, anchor = "center")
+        else:
+            current_sprite = canvas.create_image(current_x, current_y, image = east_move_1_img, anchor = "center")
+        current_sprite_list.append(current_sprite)
+        if px2 >= WORLD_SIZE - 30:
+            pass
+        else:
+            current_x += MOVE_SPEED
+            canvas.move(current_sprite, MOVE_SPEED, 0)
+    elif HAVE_MG == False and HAVE_PISTOL == False and HAVE_RIFLE == True:
+        if len(current_sprite_list)>0:
+            for i in range(len(current_sprite_list)):
+                canvas.delete(current_sprite) 
+        if STEP_COUNTER %2 == 0:
+            current_sprite = canvas.create_image(current_x, current_y, image = east_moving_rifle_1_img, anchor = "center")
+        else:
+            current_sprite = canvas.create_image(current_x, current_y, image = east_moving_rifle_2_img, anchor = "center")
+        current_sprite_list.append(current_sprite)
+        if px2 >= WORLD_SIZE - 30:
+            pass
+        else:
+            current_x += MOVE_SPEED
+            canvas.move(current_sprite, MOVE_SPEED, 0)
+    elif HAVE_MG == False and HAVE_PISTOL == True and HAVE_RIFLE == False:
+        if len(current_sprite_list)>0:
+            for i in range(len(current_sprite_list)):
+                canvas.delete(current_sprite) 
+        if STEP_COUNTER %2 == 0:
+            current_sprite = canvas.create_image(current_x, current_y, image = east_moving_pistol_1_img, anchor = "center")
+        else:
+            current_sprite = canvas.create_image(current_x, current_y, image = east_moving_pistol_2_img, anchor = "center")
+        current_sprite_list.append(current_sprite)
+        if px2 >= WORLD_SIZE - 30:
+            pass
+        else:
+            current_x += MOVE_SPEED
+            canvas.move(current_sprite, MOVE_SPEED, 0)
+    elif HAVE_MG == True and HAVE_PISTOL == False and HAVE_RIFLE == False:
+        if len(current_sprite_list)>0:
+            for i in range(len(current_sprite_list)):
+                canvas.delete(current_sprite) 
+        if STEP_COUNTER %2 == 0:
+            current_sprite = canvas.create_image(current_x, current_y, image = east_moving_MG_1_img, anchor = "center")
+        else:
+            current_sprite = canvas.create_image(current_x, current_y, image = east_moving_MG_2_img, anchor = "center")
+        current_sprite_list.append(current_sprite)
+        if px2 >= WORLD_SIZE - 30:
+            pass
+        else:
+            current_x += MOVE_SPEED
+            canvas.move(current_sprite, MOVE_SPEED, 0)
+
     move_viewport()
 def move_up(event):
     global current_sprite_img, current_y, current_sprite, current_sprite_list, STEP_COUNTER
@@ -3368,20 +3433,63 @@ def move_up(event):
     
     px1, py1, px2, py2 = canvas.bbox(current_sprite)
     
-    counter = 0
-    if len(current_sprite_list)>0:
-        for i in range(len(current_sprite_list)):
-            canvas.delete(current_sprite) 
-    if STEP_COUNTER %2 == 0:
-        current_sprite = canvas.create_image(current_x, current_y, image = north_move_2_img, anchor = "center")
-    else:
-        current_sprite = canvas.create_image(current_x, current_y, image = north_move_1_img, anchor = "center")
-    current_sprite_list.append(current_sprite)
-    if py1 <= 30:
-        pass
-    else:
-        current_y -= MOVE_SPEED
-        canvas.move(current_sprite, 0, -MOVE_SPEED) 
+    if HAVE_MG == False and HAVE_PISTOL == False and HAVE_RIFLE == False:
+        if len(current_sprite_list)>0:
+            for i in range(len(current_sprite_list)):
+                canvas.delete(current_sprite) 
+        if STEP_COUNTER %2 == 0:
+            current_sprite = canvas.create_image(current_x, current_y, image = north_move_2_img, anchor = "center")
+        else:
+            current_sprite = canvas.create_image(current_x, current_y, image = north_move_1_img, anchor = "center")
+        current_sprite_list.append(current_sprite)
+        if py1 <= 30:
+            pass
+        else:
+            current_y -= MOVE_SPEED
+            canvas.move(current_sprite, 0, -MOVE_SPEED)
+    elif HAVE_MG == False and HAVE_PISTOL == False and HAVE_RIFLE == True:
+        if len(current_sprite_list)>0:
+            for i in range(len(current_sprite_list)):
+                canvas.delete(current_sprite) 
+        if STEP_COUNTER %2 == 0:
+            current_sprite = canvas.create_image(current_x, current_y, image = north_moving_rifle_1_img, anchor = "center")
+        else:
+            current_sprite = canvas.create_image(current_x, current_y, image = north_moving_rifle_2_img, anchor = "center")
+        current_sprite_list.append(current_sprite)
+        if py1 <= 30:
+            pass
+        else:
+            current_y -= MOVE_SPEED
+            canvas.move(current_sprite, 0, -MOVE_SPEED)
+    elif HAVE_MG == False and HAVE_PISTOL == True and HAVE_RIFLE == False:
+        if len(current_sprite_list)>0:
+            for i in range(len(current_sprite_list)):
+                canvas.delete(current_sprite) 
+        if STEP_COUNTER %2 == 0:
+            current_sprite = canvas.create_image(current_x, current_y, image = north_moving_pistol_1_img, anchor = "center")
+        else:
+            current_sprite = canvas.create_image(current_x, current_y, image = north_moving_pistol_2_img, anchor = "center")
+        current_sprite_list.append(current_sprite)
+        if py1 <= 30:
+            pass
+        else:
+            current_y -= MOVE_SPEED
+            canvas.move(current_sprite, 0, -MOVE_SPEED)
+    elif HAVE_MG == True and HAVE_PISTOL == False and HAVE_RIFLE == False:
+        if len(current_sprite_list)>0:
+            for i in range(len(current_sprite_list)):
+                canvas.delete(current_sprite) 
+        if STEP_COUNTER %2 == 0:
+            current_sprite = canvas.create_image(current_x, current_y, image = north_moving_MG_1_img, anchor = "center")
+        else:
+            current_sprite = canvas.create_image(current_x, current_y, image = north_moving_MG_2_img, anchor = "center")
+        current_sprite_list.append(current_sprite)
+        if py1 <= 30:
+            pass
+        else:
+            current_y -= MOVE_SPEED
+            canvas.move(current_sprite, 0, -MOVE_SPEED)
+
     move_viewport()
 def move_down(event):
     global current_sprite_img, current_y, current_sprite, current_sprite_list, STEP_COUNTER
@@ -3389,21 +3497,71 @@ def move_down(event):
     
     px1, py1, px2, py2 = canvas.bbox(current_sprite)
     
-    counter = 0
-    if len(current_sprite_list)>0:
-        for i in range(len(current_sprite_list)):
-            canvas.delete(current_sprite) 
-    if STEP_COUNTER %2 == 0:
-        current_sprite = canvas.create_image(current_x, current_y, image = south_move_2_img, anchor = "center")
-    else:
-        current_sprite = canvas.create_image(current_x, current_y, image = south_move_1_img, anchor = "center")
-    current_sprite_list.append(current_sprite)
-    if py2 >= WORLD_SIZE-30:
-        pass
-    else:
-        current_y += MOVE_SPEED
-        canvas.move(current_sprite, 0, MOVE_SPEED)
+    if HAVE_MG == False and HAVE_PISTOL == False and HAVE_RIFLE == False:
+        if len(current_sprite_list)>0:
+            for i in range(len(current_sprite_list)):
+                canvas.delete(current_sprite) 
+        if STEP_COUNTER %2 == 0:
+            current_sprite = canvas.create_image(current_x, current_y, image = south_move_2_img, anchor = "center")
+        else:
+            current_sprite = canvas.create_image(current_x, current_y, image = south_move_1_img, anchor = "center")
+        current_sprite_list.append(current_sprite)
+        if py2 >= WORLD_SIZE - 30:
+            pass
+        else:
+            current_y += MOVE_SPEED
+            canvas.move(current_sprite, 0, MOVE_SPEED)
+    elif HAVE_MG == False and HAVE_PISTOL == False and HAVE_RIFLE == True:
+        if len(current_sprite_list)>0:
+            for i in range(len(current_sprite_list)):
+                canvas.delete(current_sprite) 
+        if STEP_COUNTER %2 == 0:
+            current_sprite = canvas.create_image(current_x, current_y, image = south_moving_rifle_1_img, anchor = "center")
+        else:
+            current_sprite = canvas.create_image(current_x, current_y, image = south_moving_rifle_2_img, anchor = "center")
+        current_sprite_list.append(current_sprite)
+        if py2 >= WORLD_SIZE - 30:
+            pass
+        else:
+            current_y += MOVE_SPEED
+            canvas.move(current_sprite, 0, MOVE_SPEED)
+    elif HAVE_MG == False and HAVE_PISTOL == True and HAVE_RIFLE == False:
+        if len(current_sprite_list)>0:
+            for i in range(len(current_sprite_list)):
+                canvas.delete(current_sprite) 
+        if STEP_COUNTER %2 == 0:
+            current_sprite = canvas.create_image(current_x, current_y, image = south_moving_pistol_1_img, anchor = "center")
+        else:
+            current_sprite = canvas.create_image(current_x, current_y, image = south_moving_pistol_2_img, anchor = "center")
+        current_sprite_list.append(current_sprite)
+        if py2 >= WORLD_SIZE - 30:
+            pass
+        else:
+            current_y += MOVE_SPEED
+            canvas.move(current_sprite, 0, MOVE_SPEED)
+    elif HAVE_MG == True and HAVE_PISTOL == False and HAVE_RIFLE == False:
+        if len(current_sprite_list)>0:
+            for i in range(len(current_sprite_list)):
+                canvas.delete(current_sprite) 
+        if STEP_COUNTER %2 == 0:
+            current_sprite = canvas.create_image(current_x, current_y, image = south_moving_MG_1_img, anchor = "center")
+        else:
+            current_sprite = canvas.create_image(current_x, current_y, image = south_moving_MG_2_img, anchor = "center")
+        current_sprite_list.append(current_sprite)
+        if py2 >= WORLD_SIZE - 30:
+            pass
+        else:
+            current_y += MOVE_SPEED
+            canvas.move(current_sprite, 0, MOVE_SPEED)
+
     move_viewport()
+def action(event):
+    global current_sprite, helicopter_sprite
+    px1, py1, px2, py2 = canvas.bbox(current_sprite)
+    hx1, hy1, hx2, hy2 = canvas.bbox(helicopter_sprite)
+
+    #if
+
 
 root.bind("a", move_left)
 root.bind("d", move_right)
@@ -3414,6 +3572,8 @@ root.bind("<Left>", move_left)
 root.bind("<Right>", move_right)
 root.bind("<Up>", move_up)
 root.bind("<Down>", move_down)
+
+root.bind("<Space>", action)
 
 #def random_spawn_weapon():
 #def random_spawn_ammo():
