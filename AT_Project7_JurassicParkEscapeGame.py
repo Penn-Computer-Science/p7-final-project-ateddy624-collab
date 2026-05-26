@@ -5,15 +5,23 @@ import random
 import math
 
 VIEW_DISTANCE = 800     #Size of the viewable area
-WORLD_SIZE = 3200       #Size of world
+WORLD_SIZE = 5000       #Size of world
 MOVE_SPEED = 20         #How far the player moves per step
 STEP_COUNTER = 0
 HAVE_PISTOL = False
 HAVE_RIFLE = False
 HAVE_MG = True
+WIN = False
 pistol_ammo = 0
 rifle_ammo = 0
-mg_ammo = 0
+mg_ammo = 100
+current_mg_bullets = []
+current_rifle_bullets = []
+current_pistol_bullets = []
+rex = []
+raptors = []
+trikes = []
+stegos = []
 
 alive = True
 
@@ -3119,16 +3127,36 @@ def make_east_moving_stego_2():
 '''
 def make_helicopter():
     pattern = [
-        "5555555555"
-        "5555555555"
-        "5555555555"
-        "5555555555"
-        "5555555555"
-        "5555555555"
-        "5555555555"
-        "5555555555"
-        "5555555555"
-        "5555555555"
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
+        "555555555555555555555555555555",
     ]
     h = len(pattern)
     w = len(pattern[0])
@@ -3151,6 +3179,33 @@ def make_helicopter():
             
     return img
 
+def vert_bullet():
+    pattern = [
+        "1",
+        "1"
+    ]
+    h = len(pattern)
+    w = len(pattern[0])
+    img = tk.PhotoImage(width = w, height = h)
+
+    for y in range(h):
+        for x in range(w):
+            if pattern [y][x] == "1":
+                img.put("#ffa96b", (x, y))
+    return img
+def hori_bullet():
+    pattern = [
+        "11"
+    ]
+    h = len(pattern)
+    w = len(pattern[0])
+    img = tk.PhotoImage(width = w, height = h)
+
+    for y in range(h):
+        for x in range(w):
+            if pattern [y][x] == "1":
+                img.put("#ffa96b", (x, y))
+    return img
 
 
 #Declare the root and name it
@@ -3187,7 +3242,7 @@ def move_viewport():
 #Executes the set up
 canvas.pack()
 
-#Optional line drawing to show movement can be inserted HERE:
+#line drawing to show movement
 for line in range(0, WORLD_SIZE + 1, 250):
     canvas.create_line(line, 0, line, WORLD_SIZE, fill = "#0D4F00")
     canvas.create_line(0, line, WORLD_SIZE, line, fill = "#0D4F00")
@@ -3288,7 +3343,70 @@ east_moving_stego_2_img = make_east_moving_stego_2()
 
 helicopter_img = make_helicopter()
 
+north_bullet_img = vert_bullet()
+east_bullet_img = hori_bullet()
+south_bullet_img = vert_bullet()
+west_bullet_img = hori_bullet()
 
+'''
+def win_blink():
+    global restart_text, flashID
+    counter = 0
+    current_color = canvas.itemcget("PLAY AGAIN", "fill")
+    if current_color == "#03AE00":
+        canvas.itemconfig("PLAY AGAIN", fill = "#5F0505")   
+    elif current_color == "#5F0505":
+        canvas.itemconfig("PLAY AGAIN", fill = "#03AE00")
+    flashID = root.after(900, win_blink)
+'''
+    
+def start():
+    global current_sprite, current_sprite_img, helicopter_sprite, current_sprite_list, current_x, current_y
+
+    #Create the player
+    current_x = 300
+    current_y = 300
+
+    current_sprite_img = "south_move_1_img"
+
+    current_sprite_list = []
+
+    current_sprite = canvas.create_image(current_x, current_y, image = south_move_1_img, anchor = "center")
+    current_sprite_list.append(current_sprite)
+    helicopter_sprite = canvas.create_image(100, 100, image = helicopter_img, anchor = "center")
+
+
+def restart(event):
+    global alive, current_mg_bullets, current_rifle_bullets, current_pistol_bullets, rex, raptors, trikes, stegos
+    canvas.delete("all")
+
+    alive = True
+
+    #if flashID is not None:
+    #    root.after_cancel(flashID)
+    #    flashID = None
+
+    current_mg_bullets = []
+    current_rifle_bullets = []
+    current_pistol_bullets = []
+    rex = []
+    raptors = []
+    trikes = []
+    stegos = []
+    start()
+
+root.bind("r", restart)
+
+
+def win():
+    canvas.delete("all")
+    canvas.create_text(VIEW_DISTANCE//2, VIEW_DISTANCE//2, text = "YOU WIN!", fill = "#5F0505", font = ("Terminal", 36))
+    play_again_text = canvas.create_text(VIEW_DISTANCE//2, VIEW_DISTANCE//1.5, text = "PLAY AGAIN", fill = "#5F0505", tags = "restart_button", font = ("Terminal", 24))
+    #win_blink()
+    canvas.tag_bind("restart_button", "<Button-1>", restart)
+    return
+
+'''
 current_x = 300
 current_y = 300
 
@@ -3299,6 +3417,7 @@ current_sprite_list = []
 current_sprite = canvas.create_image(current_x, current_y, image = south_move_1_img, anchor = "center")
 current_sprite_list.append(current_sprite)
 helicopter_sprite = canvas.create_image(100, 100, image = helicopter_img, anchor = "center")
+'''
 
 def move_left(event):
     global current_sprite_img, current_x, current_sprite, current_sprite_list, STEP_COUNTER
@@ -3555,12 +3674,71 @@ def move_down(event):
             canvas.move(current_sprite, 0, MOVE_SPEED)
 
     move_viewport()
+
+def shoot_MG():
+    #anywhere below that you see "pyimage...", it is just how the computer is reading the current sprite's image
+    global mg_ammo, current_sprite_img, HAVE_MG, current_sprite
+    current_sprite_img = canvas.itemcget(current_sprite, "image")
+    print(current_sprite_img)
+    if HAVE_MG == True:
+        if len(current_mg_bullets) > 100:
+            return
+        px1, py1, px2, py2 = canvas.bbox(current_sprite)
+        if current_sprite_img == "pyimage45" or current_sprite_img == "pyimage46":
+            b = canvas.create_image((px1+px2)//2, py1, image = north_bullet_img, anchor = "n")
+            current_mg_bullets.append(b)
+            mg_ammo -= 1
+        elif current_sprite_img == "pyimage47" or current_sprite_img == "pyimage48":
+            b = canvas.create_image(px2, ((py1+py2)//2)+2, image = east_bullet_img, anchor = "e")
+            current_mg_bullets.append(b)
+            mg_ammo -= 1
+        elif current_sprite_img == "pyimage49" or current_sprite_img == "pyimage50":
+            b = canvas.create_image((px1+px2)//2, py2, image = south_bullet_img, anchor = "s")
+            current_mg_bullets.append(b)
+            mg_ammo -= 1
+        elif current_sprite_img == "pyimage51" or current_sprite_img == "pyimage52":
+            b = canvas.create_image(px1, (py1+py2)//2, image = west_bullet_img, anchor = "w")
+            current_mg_bullets.append(b)
+            mg_ammo -= 1
+        else:
+            pass
+        
+    else:
+        pass
+    print(mg_ammo)
+def shoot_pistol():
+    global pistol_ammo, current_sprite_img, HAVE_PISTOL
+    if HAVE_MG == True:
+        if len(current_mg_bullets) > 25:
+            return
+        pistol_ammo -= 1
+    else:
+        pass
+def shoot_rifle():
+    global rifle_ammo, current_sprite_img, HAVE_RIFLE
+    if HAVE_RIFLE == True:
+        if len(current_rifle_bullets) > 10:
+            return
+        rifle_ammo -= 1
+    else:
+        pass
+
 def action(event):
-    global current_sprite, helicopter_sprite
+    global current_sprite, helicopter_sprite, WIN
     px1, py1, px2, py2 = canvas.bbox(current_sprite)
     hx1, hy1, hx2, hy2 = canvas.bbox(helicopter_sprite)
 
-    #if
+    win_case =  px1 > hx1 and px2 < hx2 and py1 > hy1 and py2 < hy2
+    if win_case == True:
+        win()
+    elif HAVE_MG and mg_ammo > 0:
+        shoot_MG()
+    elif HAVE_PISTOL and pistol_ammo > 0:
+        shoot_pistol()
+    elif HAVE_RIFLE and rifle_ammo > 0:
+        shoot_rifle()
+    #else:
+    #    pass
 
 
 root.bind("a", move_left)
@@ -3573,7 +3751,7 @@ root.bind("<Right>", move_right)
 root.bind("<Up>", move_up)
 root.bind("<Down>", move_down)
 
-root.bind("<Space>", action)
+root.bind("<space>", action)
 
 #def random_spawn_weapon():
 #def random_spawn_ammo():
@@ -3582,7 +3760,7 @@ root.bind("<Space>", action)
 
 
 
-
+start()
 
 move_viewport()
 canvas.focus_set()
