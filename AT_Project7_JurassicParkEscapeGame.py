@@ -12,6 +12,15 @@ HAVE_PISTOL = False
 HAVE_RIFLE = False
 HAVE_MG = True
 WIN = False
+HP = 100
+REX_DAMAGE = 100
+RAPTOR_DAMAGE = 15
+STEGO_DAMAGE = 25
+TRIKE_DAMAGE = 50
+REX_SPEED = MOVE_SPEED//2
+RAPTOR_SPEED = MOVE_SPEED//1.1
+STEGO_SPEED = MOVE_SPEED//2.5
+TRIKE_SPEED = MOVE_SPEED//2.125
 pistol_ammo = 0
 rifle_ammo = 0
 mg_ammo = 100
@@ -3374,6 +3383,7 @@ def start():
     current_sprite = canvas.create_image(current_x, current_y, image = south_move_1_img, anchor = "center")
     current_sprite_list.append(current_sprite)
     helicopter_sprite = canvas.create_image(100, 100, image = helicopter_img, anchor = "center")
+    game_loop()
 
 
 def restart(event):
@@ -3686,19 +3696,19 @@ def shoot_MG():
         px1, py1, px2, py2 = canvas.bbox(current_sprite)
         if current_sprite_img == "pyimage45" or current_sprite_img == "pyimage46":
             b = canvas.create_image((px1+px2)//2, py1, image = north_bullet_img, anchor = "n")
-            current_mg_bullets.append(b)
+            current_mg_bullets.append("up")
             mg_ammo -= 1
         elif current_sprite_img == "pyimage47" or current_sprite_img == "pyimage48":
             b = canvas.create_image(px2, ((py1+py2)//2)+2, image = east_bullet_img, anchor = "e")
-            current_mg_bullets.append(b)
+            current_mg_bullets.append("left")
             mg_ammo -= 1
         elif current_sprite_img == "pyimage49" or current_sprite_img == "pyimage50":
             b = canvas.create_image((px1+px2)//2, py2, image = south_bullet_img, anchor = "s")
-            current_mg_bullets.append(b)
+            current_mg_bullets.append("down")
             mg_ammo -= 1
         elif current_sprite_img == "pyimage51" or current_sprite_img == "pyimage52":
             b = canvas.create_image(px1, (py1+py2)//2, image = west_bullet_img, anchor = "w")
-            current_mg_bullets.append(b)
+            current_mg_bullets.append("right")
             mg_ammo -= 1
         else:
             pass
@@ -3706,6 +3716,7 @@ def shoot_MG():
     else:
         pass
     print(mg_ammo)
+    print(current_mg_bullets)
 def shoot_pistol():
     global pistol_ammo, current_sprite_img, HAVE_PISTOL
     if HAVE_MG == True:
@@ -3758,11 +3769,65 @@ root.bind("<space>", action)
 #def random_spawn_peaceful():
 #def random_spawn_predator():
 
+def game_loop():
+    global alive, current_mg_bullets, current_pistol_bullets, current_rifle_bullets
+    global rex, raptors, stegos, trikes, current_sprite, current_sprite_img
+    global HP, REX_DAMAGE, RAPTOR_DAMAGE, STEGO_DAMAGE, TRIKE_DAMAGE
+    global pistol_ammo, rifle_ammo, mg_ammo, HAVE_PISTOL, HAVE_RIFLE, HAVE_MG
+    move_viewport()
+    if not alive:
+        canvas.delete("all")
+        canvas.create_text(VIEW_DISTANCE//2, VIEW_DISTANCE//2, text = "GAME OVER", fill = "#5F0505", font = ("Terminal", 36))
+        restart_text = canvas.create_text(VIEW_DISTANCE//2, VIEW_DISTANCE//1.5, text = "RESTART", fill = "#5F0505", tags = "restart_button", font = ("Terminal", 24))
+        canvas.tag_bind("restart_button", "<Button-1>", restart)
+        return
+    possible_x = []
+    possible_y = []
+    for i in range(WORLD_SIZE):
+        possible_x.append(i)
+        possible_y.append(i)
+    #Keeps a minimum level of dinos in the game at all times
+    try:
+        if rex[0] == False:
+            r = canvas.create_image(random.choice(possible_x), random.choice(possible_y), image = helicopter_img, anchor = "center")
+            rex.append(r)
+    except IndexError:
+        r = canvas.create_image(random.choice(possible_x), random.choice(possible_y), image = helicopter_img, anchor = "center")
+        rex.append(r)
+    try:
+        if raptors[2] == False:
+            r = canvas.create_image(random.choice(possible_x), random.choice(possible_y), image = helicopter_img, anchor = "center")
+            raptors.append(r)
+    except IndexError:
+        r = canvas.create_image(random.choice(possible_x), random.choice(possible_y), image = helicopter_img, anchor = "center")
+        raptors.append(r)
+    try:
+        if stegos[5] == False:
+            r = canvas.create_image(random.choice(possible_x), random.choice(possible_y), image = helicopter_img, anchor = "center")
+            stegos.append(r)
+    except IndexError:
+        r = canvas.create_image(random.choice(possible_x), random.choice(possible_y), image = helicopter_img, anchor = "center")
+        stegos.append(r)
+    try:
+        if trikes[3] == False:
+            r = canvas.create_image(random.choice(possible_x), random.choice(possible_y), image = helicopter_img, anchor = "center")
+            trikes.append(r)
+    except IndexError:
+        r = canvas.create_image(random.choice(possible_x), random.choice(possible_y), image = helicopter_img, anchor = "center")
+        trikes.append(r)
+    px1, py1, px2, py2 = canvas.bbox(current_sprite)
+    for i in len(rex):
+        rex1, rey1, rex2, rey2 = canvas.bbox(i)
+        if px1 > (rex1+150) and px2 < (rex2 - 150) and py1 > (rey1+150) and py2 < (rey2-150):
+            if px1 > (rex1+150):
+                if px2 < (rex2 - 150):
+                    if py1 > (rey1+150):
+                        if py2 < (rey2-150):
 
 
 start()
 
-move_viewport()
 canvas.focus_set()
+
 
 root.mainloop()
