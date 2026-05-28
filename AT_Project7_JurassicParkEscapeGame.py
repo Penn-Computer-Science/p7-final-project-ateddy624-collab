@@ -3700,22 +3700,22 @@ def shoot_MG():
         px1, py1, px2, py2 = canvas.bbox(current_sprite)
         if current_sprite_img == "pyimage45" or current_sprite_img == "pyimage46":
             b = canvas.create_image((px1+px2)//2, py1, image = north_bullet_img, anchor = "n")
-            current_mg_bullets.append("up")
+            current_mg_bullets.append(["up", b])
             mg_ammo -= 1
             print(canvas.itemcget(b, "image"))
         elif current_sprite_img == "pyimage47" or current_sprite_img == "pyimage48":
             b = canvas.create_image(px2, ((py1+py2)//2)+2, image = east_bullet_img, anchor = "e")
-            current_mg_bullets.append("left")
+            current_mg_bullets.append(["right", b])
             mg_ammo -= 1
             print(canvas.itemcget(b, "image"))
         elif current_sprite_img == "pyimage49" or current_sprite_img == "pyimage50":
             b = canvas.create_image((px1+px2)//2, py2, image = south_bullet_img, anchor = "s")
-            current_mg_bullets.append("down")
+            current_mg_bullets.append(["down", b])
             mg_ammo -= 1
             print(canvas.itemcget(b, "image"))
         elif current_sprite_img == "pyimage51" or current_sprite_img == "pyimage52":
             b = canvas.create_image(px1, (py1+py2)//2, image = west_bullet_img, anchor = "w")
-            current_mg_bullets.append("right")
+            current_mg_bullets.append(["left", b])
             mg_ammo -= 1
             print(canvas.itemcget(b, "image"))
         else:
@@ -3792,6 +3792,41 @@ def move_el(start_distance, MOVE):
             if (pc[1] - rey2) < -10:
                 canvas.move(rex[i], 0, -MOVE)
 
+def move_bullets():
+    global current_mg_bullets
+    counter = -1
+    canvas.move(current_mg_bullets, 100, 0)
+    for l in current_mg_bullets[:]:
+        counter+=1
+        print(l)
+        if current_mg_bullets[counter][0] == "up":
+            canvas.move(current_mg_bullets[counter][1], 0, -100)
+        elif current_mg_bullets[counter][0] == "right":
+            canvas.move(current_mg_bullets[counter][1], 100, 0)
+        elif current_mg_bullets[counter][0] == "down":
+            canvas.move(current_mg_bullets[counter][1], 0, 100)
+        elif current_mg_bullets[counter][0] == "left":
+            canvas.move(current_mg_bullets[counter][1], -100, 0)
+    '''
+    for b in current_pistol_bullets:
+        if current_pistol_bullets[b] == "pyimage54":
+            canvas.move(b, 0, -100)
+        elif current_pistol_bullets[b] == "pyimage55":
+            canvas.move(b, 100, 0)
+        elif current_pistol_bullets[b] == "pyimage56":
+            canvas.move(b, 0, 100)
+        elif current_pistol_bullets[b] == "pyimage57":
+            canvas.move(b, -100, 0)
+    for b in current_rifle_bullets:
+        if current_rifle_bullets[b] == "pyimage54":
+            canvas.move(b, 0, -100)
+        elif current_rifle_bullets[b] == "pyimage55":
+            canvas.move(b, 100, 0)
+        elif current_rifle_bullets[b] == "pyimage56":
+            canvas.move(b, 0, 100)
+        elif current_rifle_bullets[b] == "pyimage57":
+            canvas.move(b, -100, 0)
+    '''
 
 def game_loop():
     global alive, current_mg_bullets, current_pistol_bullets, current_rifle_bullets
@@ -3845,34 +3880,8 @@ def game_loop():
     move_el(TRIKE_VIEW, TRIKE_SPEED)
     move_el(STEGO_VIEW, STEGO_SPEED)
 
-    for i in current_mg_bullets[:]:
-        b = canvas.itemcget(current_mg_bullets, "image")
-        if current_mg_bullets[b] == "pyimage54":
-            canvas.move(b, 0, -100)
-        elif current_mg_bullets[b] == "pyimage55":
-            canvas.move(b, 100, 0)
-        elif current_mg_bullets[b] == "pyimage56":
-            canvas.move(b, 0, 100)
-        elif current_mg_bullets[b] == "pyimage57":
-            canvas.move(b, -100, 0)
-    for b in current_pistol_bullets:
-        if current_pistol_bullets[b] == "pyimage54":
-            canvas.move(b, 0, -100)
-        elif current_pistol_bullets[b] == "pyimage55":
-            canvas.move(b, 100, 0)
-        elif current_pistol_bullets[b] == "pyimage56":
-            canvas.move(b, 0, 100)
-        elif current_pistol_bullets[b] == "pyimage57":
-            canvas.move(b, -100, 0)
-    for b in current_rifle_bullets:
-        if current_rifle_bullets[b] == "pyimage54":
-            canvas.move(b, 0, -100)
-        elif current_rifle_bullets[b] == "pyimage55":
-            canvas.move(b, 100, 0)
-        elif current_rifle_bullets[b] == "pyimage56":
-            canvas.move(b, 0, 100)
-        elif current_rifle_bullets[b] == "pyimage57":
-            canvas.move(b, -100, 0)
+    move_bullets()
+    
     root.after(100, game_loop)
             
 
