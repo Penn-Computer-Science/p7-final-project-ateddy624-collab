@@ -18,9 +18,13 @@ RAPTOR_DAMAGE = 15
 STEGO_DAMAGE = 25
 TRIKE_DAMAGE = 50
 REX_SPEED = MOVE_SPEED//2
-RAPTOR_SPEED = MOVE_SPEED//1.1
+RAPTOR_SPEED = MOVE_SPEED//1.5
 STEGO_SPEED = MOVE_SPEED//2.5
 TRIKE_SPEED = MOVE_SPEED//2.125
+REX_VIEW = WORLD_SIZE
+RAPTOR_VIEW = VIEW_DISTANCE//2.5
+STEGO_VIEW = VIEW_DISTANCE//4
+TRIKE_VIEW = VIEW_DISTANCE//3
 pistol_ammo = 0
 rifle_ammo = 0
 mg_ammo = 100
@@ -3689,7 +3693,7 @@ def shoot_MG():
     #anywhere below that you see "pyimage...", it is just how the computer is reading the current sprite's image
     global mg_ammo, current_sprite_img, HAVE_MG, current_sprite
     current_sprite_img = canvas.itemcget(current_sprite, "image")
-    print(current_sprite_img)
+    #print(current_sprite_img)
     if HAVE_MG == True:
         if len(current_mg_bullets) > 100:
             return
@@ -3698,25 +3702,29 @@ def shoot_MG():
             b = canvas.create_image((px1+px2)//2, py1, image = north_bullet_img, anchor = "n")
             current_mg_bullets.append("up")
             mg_ammo -= 1
+            print(canvas.itemcget(b, "image"))
         elif current_sprite_img == "pyimage47" or current_sprite_img == "pyimage48":
             b = canvas.create_image(px2, ((py1+py2)//2)+2, image = east_bullet_img, anchor = "e")
             current_mg_bullets.append("left")
             mg_ammo -= 1
+            print(canvas.itemcget(b, "image"))
         elif current_sprite_img == "pyimage49" or current_sprite_img == "pyimage50":
             b = canvas.create_image((px1+px2)//2, py2, image = south_bullet_img, anchor = "s")
             current_mg_bullets.append("down")
             mg_ammo -= 1
+            print(canvas.itemcget(b, "image"))
         elif current_sprite_img == "pyimage51" or current_sprite_img == "pyimage52":
             b = canvas.create_image(px1, (py1+py2)//2, image = west_bullet_img, anchor = "w")
             current_mg_bullets.append("right")
             mg_ammo -= 1
+            print(canvas.itemcget(b, "image"))
         else:
             pass
         
     else:
         pass
     print(mg_ammo)
-    print(current_mg_bullets)
+    #print(current_mg_bullets)
 def shoot_pistol():
     global pistol_ammo, current_sprite_img, HAVE_PISTOL
     if HAVE_MG == True:
@@ -3769,6 +3777,22 @@ root.bind("<space>", action)
 #def random_spawn_peaceful():
 #def random_spawn_predator():
 
+def move_el(start_distance, MOVE):
+    px1, py1, px2, py2 = canvas.bbox(current_sprite)
+    pc = ((px1+px2)//2,(py1+py2)//2)
+    for i in range(len(rex)):
+        rex1, rey1, rex2, rey2 = canvas.bbox(rex[i])
+        if (pc[0]-rex1) < start_distance and  (pc[0]-rex2)>-start_distance and (pc[1] - rey1) < start_distance and (pc[1] - rey2) > -start_distance:
+            if (pc[0] - rex1) > 10:
+                canvas.move(rex[i], MOVE, 0)
+            if (pc[0]- rex2) < -10:
+                canvas.move(rex[i], -MOVE, 0)
+            if (pc[1] - rey1) > 10:
+                canvas.move(rex[i], 0, MOVE)
+            if (pc[1] - rey2) < -10:
+                canvas.move(rex[i], 0, -MOVE)
+
+
 def game_loop():
     global alive, current_mg_bullets, current_pistol_bullets, current_rifle_bullets
     global rex, raptors, stegos, trikes, current_sprite, current_sprite_img
@@ -3815,19 +3839,47 @@ def game_loop():
     except IndexError:
         r = canvas.create_image(random.choice(possible_x), random.choice(possible_y), image = helicopter_img, anchor = "center")
         trikes.append(r)
-    px1, py1, px2, py2 = canvas.bbox(current_sprite)
-    for i in len(rex):
-        rex1, rey1, rex2, rey2 = canvas.bbox(i)
-        if px1 > (rex1+150) and px2 < (rex2 - 150) and py1 > (rey1+150) and py2 < (rey2-150):
-            if px1 > (rex1+150):
-                if px2 < (rex2 - 150):
-                    if py1 > (rey1+150):
-                        if py2 < (rey2-150):
+    
+    move_el(REX_VIEW, REX_SPEED)
+    move_el(RAPTOR_VIEW, RAPTOR_SPEED)
+    move_el(TRIKE_VIEW, TRIKE_SPEED)
+    move_el(STEGO_VIEW, STEGO_SPEED)
+
+    for i in current_mg_bullets[:]:
+        b = canvas.itemcget(current_mg_bullets, "image")
+        if current_mg_bullets[b] == "pyimage54":
+            canvas.move(b, 0, -100)
+        elif current_mg_bullets[b] == "pyimage55":
+            canvas.move(b, 100, 0)
+        elif current_mg_bullets[b] == "pyimage56":
+            canvas.move(b, 0, 100)
+        elif current_mg_bullets[b] == "pyimage57":
+            canvas.move(b, -100, 0)
+    for b in current_pistol_bullets:
+        if current_pistol_bullets[b] == "pyimage54":
+            canvas.move(b, 0, -100)
+        elif current_pistol_bullets[b] == "pyimage55":
+            canvas.move(b, 100, 0)
+        elif current_pistol_bullets[b] == "pyimage56":
+            canvas.move(b, 0, 100)
+        elif current_pistol_bullets[b] == "pyimage57":
+            canvas.move(b, -100, 0)
+    for b in current_rifle_bullets:
+        if current_rifle_bullets[b] == "pyimage54":
+            canvas.move(b, 0, -100)
+        elif current_rifle_bullets[b] == "pyimage55":
+            canvas.move(b, 100, 0)
+        elif current_rifle_bullets[b] == "pyimage56":
+            canvas.move(b, 0, 100)
+        elif current_rifle_bullets[b] == "pyimage57":
+            canvas.move(b, -100, 0)
+    root.after(100, game_loop)
+            
 
 
-start()
 
 canvas.focus_set()
 
+start()
 
 root.mainloop()
