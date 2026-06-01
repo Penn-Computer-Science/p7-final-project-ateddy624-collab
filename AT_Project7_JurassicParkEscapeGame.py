@@ -3200,8 +3200,8 @@ root.bind("r", restart)
 
 def win():
     canvas.delete("all")
-    canvas.create_text(4525, 4500, text = "YOU WIN!", fill = "#5F0505", font = ("Terminal", 36))
-    play_again_text = canvas.create_text(4525, 4600, text = "PLAY AGAIN", fill = "#5F0505", tags = "restart_button", font = ("Terminal", 24))
+    canvas.create_text(current_x, current_y, text = "YOU WIN!", fill = "#5F0505", font = ("Terminal", 36))
+    play_again_text = canvas.create_text(current_x, current_y+100, text = "PLAY AGAIN", fill = "#5F0505", tags = "restart_button", font = ("Terminal", 24))
     #win_blink()
     canvas.tag_bind("restart_button", "<Button-1>", restart)
     return
@@ -3581,25 +3581,25 @@ def move_rex():
 def move_raptor():
     px1, py1, px2, py2 = canvas.bbox(current_sprite)
     pc = ((px1+px2)//2,(py1+py2)//2)
-    for i in range(len(raptors)):
-        rx1, ry1, rx2, ry2 = canvas.bbox(raptors[i])
+    for i in raptors[:]:
+        rx1, ry1, rx2, ry2 = canvas.bbox(i)
         if (pc[0]-rx1) < RAPTOR_VIEW and  (pc[0]-rx2)>-RAPTOR_VIEW and (pc[1] - ry1) < RAPTOR_VIEW and (pc[1] - ry2) > -RAPTOR_VIEW:
             if (pc[0] - rx1) > 10:
-                canvas.move(raptors[i], RAPTOR_SPEED, 0)
+                canvas.move(i, RAPTOR_SPEED, 0)
             if (pc[0]- rx2) < -10:
-                canvas.move(raptors[i], -RAPTOR_SPEED, 0)
+                canvas.move(i, -RAPTOR_SPEED, 0)
             if (pc[1] - ry1) > 10:
-                canvas.move(raptors[i], 0, RAPTOR_SPEED)
+                canvas.move(i, 0, RAPTOR_SPEED)
             if (pc[1] - ry2) < -10:
-                canvas.move(raptors[i], 0, -RAPTOR_SPEED)
+                canvas.move(i, 0, -RAPTOR_SPEED)
 
 def move_bullets():
     global current_mg_bullets, current_pistol_bullets, current_rifle_bullets, rex, raptors
     counter = -1
     canvas.move(current_mg_bullets, 100, 0)
     for l in current_mg_bullets[:]:
-        counter = -1
         counter+=1
+    for l in current_mg_bullets[:]:
         x1, y1, x2, y2 = canvas.bbox(current_mg_bullets[counter][1])
         if current_mg_bullets[counter][0] == "up":
             canvas.move(current_mg_bullets[counter][1], 0, -100)
@@ -3621,8 +3621,8 @@ def move_bullets():
             if x1 < 0:
                 canvas.delete(current_mg_bullets[counter])
                 current_mg_bullets.remove(current_mg_bullets[counter])
-        for r in range(len(rex)):
-            rex1, rey1, rex2, rey2 = canvas.bbox(rex[r])
+        for r in rex:
+            rex1, rey1, rex2, rey2 = canvas.bbox(r)
             x = rex1 < x2 and rex2 > x1 and rey1 < y2 and rey2 > y1
             if x == True:
                 canvas.delete(current_mg_bullets[counter])
@@ -3633,18 +3633,19 @@ def move_bullets():
                     rex.remove(r)
                 break
             continue
-        for v in range(len(raptors)):
-            rx1, ry1, rx2, ry2 = canvas.bbox(raptors[v][1])
+        for v in raptors[:]:
+            rx1, ry1, rx2, ry2 = canvas.bbox(v)
             x = rx1 < x2 and rx2 > x1 and ry1 < y2 and ry2 > y1
             if x == True:
                 canvas.delete(current_mg_bullets[counter])
-                canvas.delete(raptors[v])
+                canvas.delete(v)
                 if l in current_mg_bullets:
                     current_mg_bullets.remove(current_mg_bullets[counter])
                 if v in raptors:
-                    rex.remove(raptors[v])
+                    raptors.remove(v)
                 break
             continue
+        counter -= 1
 
 
     '''
@@ -3667,6 +3668,14 @@ def move_bullets():
         elif current_rifle_bullets[b] == "pyimage57":
             canvas.move(b, -100, 0)
     '''
+
+def lose():
+    canvas.delete("all")
+    canvas.create_text(current_x, current_y, text = "GAME OVER", fill = "#5F0505", font = ("Terminal", 36))
+    play_again_text = canvas.create_text(current_x, current_y+100, text = "RESTART", fill = "#5F0505", tags = "restart_button", font = ("Terminal", 24))
+    #win_blink()
+    canvas.tag_bind("restart_button", "<Button-1>", restart)
+    return
 
 def game_loop():
     global alive, current_mg_bullets, current_pistol_bullets, current_rifle_bullets
@@ -3709,14 +3718,32 @@ def game_loop():
     except IndexError:
         r = canvas.create_image(random.choice(possible_x), random.choice(possible_y), image = helicopter_img, anchor = "center")
         trikes.append(r)
-    
-    move_rex()
-    move_raptor()
+
+    try:
+        move_rex()
+    except TypeError:
+        pass
+    try:
+        move_raptor()
+    except TypeError:
+        pass
     #move_el(TRIKE_VIEW, TRIKE_SPEED)
     #move_el(STEGO_VIEW, STEGO_SPEED)
 
     move_bullets()
-    
+
+    px1, py1, px2, py2 = canvas.bbox(current_sprite)
+    for i in rex[:]:
+        rex1, rey1, rex2, rey2 = canvas.bbox(i)
+        if rex1 < px2 and rex2 > px1 and rey1 < py2 and rey2 > py1:
+            HP -= REX_DAMAGE
+    for i in raptors[:]:
+        rx1, ry1, rx2, ry2 = canvas.bbox(i)
+        if rx1 < px2 and rx2 > px1 and ry1 < py2 and ry2 > py1:
+            HP -= RAPTOR_DAMAGE
+
+    if HP <= 0:
+        lose()
     root.after(100, game_loop)
             
 
